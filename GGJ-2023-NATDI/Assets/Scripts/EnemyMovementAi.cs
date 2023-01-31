@@ -14,12 +14,14 @@ public class EnemyMovementAi : MonoBehaviour
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        SetTarget();
     }
 
     private void FixedUpdate()
     {
         ChaseMushroom();
+
+        if (_mushroom == null) return;
+
         _mushroom = Services.Get<CollectionService>().GetNearestMushroom(transform.position);
         var distance = Vector3.Distance(transform.position, _mushroom.Position);
         Debug.Log(distance);
@@ -34,11 +36,15 @@ public class EnemyMovementAi : MonoBehaviour
                 _passedTime = 0f;
             }
         }
-        Debug.Log(_passedTime);
     }
 
     private void ChaseMushroom()
     {
+        if (_mushroom == null)
+        {
+            SetTarget();
+        }
+
         _agent.SetDestination(_mushroom.Position);
     }
 

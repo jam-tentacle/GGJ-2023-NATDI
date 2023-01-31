@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +10,7 @@ public class EnemyMovementAi : MonoBehaviour
     private bool _alreadyAttacked;
     private bool _walkPointSet;
     private float _passedTime;
+    private bool _isGathering;
 
     private void Start()
     {
@@ -24,6 +23,8 @@ public class EnemyMovementAi : MonoBehaviour
 
     private void OnCharacterGatherEnded()
     {
+        _isGathering = false;
+
         Services.Get<SpawnerService>().DespawnMushroom(_mushroom);
         SetTarget();
     }
@@ -38,38 +39,39 @@ public class EnemyMovementAi : MonoBehaviour
     private void OnDestroy()
     {
         _characterAnimator.Move -= OnCharacterMove;
+        _characterAnimator.GatherEnded -= OnCharacterGatherEnded;
     }
 
     private void FixedUpdate()
     {
-        ChaseMushroom();
+        if (_isGathering)
+        {
+            return;
+        }
 
-        if (_mushroom == null) return;
+        if (_mushroom == null)
+        {
+            SetTarget();
+        }
+
+        if (_mushroom == null)
+        {
+            return;
+        }
 
         _mushroom = Services.Get<CollectionService>().GetNearestMushroom(transform.position);
         bool moving = true;
         var distance = Vector3.Distance(transform.position, _mushroom.Position);
         if (distance < 1f)
         {
+            _isGathering = true;
             _characterAnimator.SetGather();
             moving = false;
         }
 
-
         _characterAnimator.SetVelocityZ(_agent.velocity.magnitude);
-
         _characterAnimator.SetMoving(moving);
         _agent.nextPosition = transform.position;
-    }
-
-    private void ChaseMushroom()
-    {
-        if (_mushroom == null)
-        {
-            SetTarget();
-        }
-
-        _agent.SetDestination(_mushroom.Position);
     }
 
     private void SetTarget()
@@ -77,6 +79,7 @@ public class EnemyMovementAi : MonoBehaviour
         _mushroom = Services.Get<CollectionService>().GetNearestMushroom(transform.position);
         transform.LookAt(_mushroom.transform);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        _agent.SetDestination(_mushroom.Position);
     }
 
     private void OnDrawGizmos()

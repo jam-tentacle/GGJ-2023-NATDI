@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 
@@ -31,4 +32,10 @@ public class CharacterAnimator : MonoBehaviour
     {
         Move?.Invoke(_animator.deltaPosition, _animator.rootRotation);
     }
+
+    [UsedImplicitly]
+    private void FootL() { }
+
+    [UsedImplicitly]
+    private void FootR() { }
 }

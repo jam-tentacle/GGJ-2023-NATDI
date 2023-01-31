@@ -6,4 +6,5 @@ public class AssetsCollection : Service
     public MushroomArea MushroomAreaPrefab;
     public LineRenderer LinePrefab;
     public Projectile SporePrefab;
+    public GameSettings Settings;
 }

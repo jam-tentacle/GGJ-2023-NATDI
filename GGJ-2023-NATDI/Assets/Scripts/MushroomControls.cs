@@ -8,6 +8,8 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     private MyceliumVisualizer _myceliumVisualizer;
     private SpawnerService _spawnerService;
 
+    private float _currentReloadTime;
+
     public void Inject()
     {
         _cameraController = Services.Get<CameraController>();
@@ -27,9 +29,19 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     public void GameUpdate(float delta)
     {
+        UpdateReloadTime(delta);
+
         if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
 
-        Shoot();
+        if (_currentReloadTime <= 0)
+        {
+            Shoot();
+        }
+    }
+
+    private void UpdateReloadTime(float delta)
+    {
+        _currentReloadTime -= delta;
     }
 
     private void Shoot()
@@ -43,6 +55,8 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         projectile.transform.position = position;
         projectile.Hit += OnProjectileHit;
         projectile.Launch(targetPosition);
+
+        _currentReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
     }
 
     private void OnProjectileHit(Vector3 position)

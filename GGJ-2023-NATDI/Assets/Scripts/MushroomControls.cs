@@ -24,9 +24,32 @@ public class MushroomControls : Service, IUpdate
     {
         if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
 
-        MushroomArea area = Instantiate(_assetsCollection.MushroomAreaPrefab);
-        Vector3 position = _shootLine.GetEndPosition();
+        Shoot();
+    }
+
+    private void Shoot()
+    {
+        Vector3 targetPosition = _shootLine.GetEndPosition();
+        targetPosition.y = 0;
+
+        Projectile projectile = Instantiate(_assetsCollection.SporePrefab);
+        Vector3 position = _cameraController.Target.Position;
+        position.y = 0.5f;
+        projectile.transform.position = position;
+        projectile.Hit += OnProjectileHit;
+        projectile.Launch(targetPosition);
+    }
+
+    private void OnProjectileHit(Vector3 position)
+    {
         position.y = 0;
+
+        SpawnMushroomArea(position);
+    }
+
+    private void SpawnMushroomArea(Vector3 position)
+    {
+        MushroomArea area = Instantiate(_assetsCollection.MushroomAreaPrefab);
         area.transform.position = position;
 
         _cameraController.SetTarget(area);

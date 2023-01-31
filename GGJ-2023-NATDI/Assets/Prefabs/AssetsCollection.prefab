@@ -47,3 +47,4 @@ MonoBehaviour:
   MushroomPrefab: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
   MushroomAreaPrefab: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
   LinePrefab: {fileID: 6137572629329716095, guid: 12eaea89e87914e61affef4f5e3ae54d, type: 3}
+  SporePrefab: {fileID: 2490335654276082678, guid: 62e4ff03a3aa447e0865978d9b9f1ff9, type: 3}

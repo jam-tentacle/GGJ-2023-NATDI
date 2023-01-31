@@ -6,6 +6,7 @@ public class MushroomControls : Service, IUpdate
     private ShootLine _shootLine;
     private AssetsCollection _assetsCollection;
     private MyceliumVisualizer _myceliumVisualizer;
+    private SpawnerService _spawnerService;
 
     private void Start()
     {
@@ -13,6 +14,7 @@ public class MushroomControls : Service, IUpdate
         _shootLine = Services.Get<ShootLine>();
         _assetsCollection = Services.Get<AssetsCollection>();
         _myceliumVisualizer = new MyceliumVisualizer(transform);
+        _spawnerService = Services.Get<SpawnerService>();
 
         MushroomArea area = FindObjectOfType<MushroomArea>();
         _cameraController.SetTarget(area);
@@ -49,8 +51,7 @@ public class MushroomControls : Service, IUpdate
 
     private void SpawnMushroomArea(Vector3 position)
     {
-        MushroomArea area = Instantiate(_assetsCollection.MushroomAreaPrefab);
-        area.transform.position = position;
+        MushroomArea area = _spawnerService.SpawnMushroomArea(position);
 
         _cameraController.SetTarget(area);
         _shootLine.SetTarget(area);

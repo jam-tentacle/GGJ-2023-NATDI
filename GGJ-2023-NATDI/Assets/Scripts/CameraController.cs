@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class DragMouseOrbit : MonoBehaviour
+public class CameraController : Service, ILateUpdate
 {
-    [SerializeField] private Transform _target;
     [SerializeField] private float _distance = 2f;
     [SerializeField] private float _xSpeed = 150f;
     [SerializeField] private float _ySpeed = 150f;
@@ -14,6 +13,9 @@ public class DragMouseOrbit : MonoBehaviour
     private float _rotationXAxis;
     private float _velocityX;
     private float _velocityY;
+
+    private ITarget _target;
+    public ITarget Target => _target;
 
     private void Start()
     {
@@ -27,24 +29,25 @@ public class DragMouseOrbit : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    public void GameLateUpdate(float delta)
     {
-        if (!_target)
+        if (_target == null)
         {
             return;
         }
 
+        transform.position = _target.Position;
         _velocityX += _xSpeed * Input.GetAxis("Mouse X") * _distance * 0.02f;
         _velocityY += _ySpeed * Input.GetAxis("Mouse Y") * 0.02f;
 
         _rotationYAxis += _velocityX;
         _rotationXAxis -= _velocityY;
         _rotationXAxis = ClampAngle(_rotationXAxis, _yMinLimit, _yMaxLimit);
-        Quaternion toRotation = Quaternion.Euler(0, _rotationYAxis, _rotationXAxis);
+        Quaternion toRotation = Quaternion.Euler(_rotationXAxis, _rotationYAxis, 0);
 
         transform.rotation = toRotation;
-        _velocityX = Mathf.Lerp(_velocityX, 0, Time.deltaTime * _smoothTime);
-        _velocityY = Mathf.Lerp(_velocityY, 0, Time.deltaTime * _smoothTime);
+        _velocityX = Mathf.Lerp(_velocityX, 0, delta * _smoothTime);
+        _velocityY = Mathf.Lerp(_velocityY, 0, delta * _smoothTime);
         _velocityX = 0;
         _velocityY = 0;
     }
@@ -56,5 +59,10 @@ public class DragMouseOrbit : MonoBehaviour
         if (angle > 360F)
             angle -= 360F;
         return Mathf.Clamp(angle, min, max);
+    }
+
+    public void SetTarget(ITarget target)
+    {
+        _target = target;
     }
 }

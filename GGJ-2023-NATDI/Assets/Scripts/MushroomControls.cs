@@ -18,7 +18,7 @@ public class MushroomControls : Service, IUpdate
 
     public void GameUpdate(float delta)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             Mushroom mushroom = Instantiate(_mushroomPrefab);
             mushroom.transform.position = _shootLine.GetEndPosition();

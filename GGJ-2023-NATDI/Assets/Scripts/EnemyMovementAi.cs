@@ -11,9 +11,11 @@ public class EnemyMovementAi : MonoBehaviour
     private bool _walkPointSet;
     private float _passedTime;
     private bool _isGathering;
+    private CollectionService _collectionService;
 
     private void Start()
     {
+        _collectionService = Services.Get<CollectionService>();
         _agent = GetComponent<NavMeshAgent>();
         _agent.updatePosition = false;
         _agent.updateRotation = true;
@@ -59,9 +61,8 @@ public class EnemyMovementAi : MonoBehaviour
             return;
         }
 
-        _mushroom = Services.Get<CollectionService>().GetNearestMushroom(transform.position);
         bool moving = true;
-        var distance = Vector3.Distance(transform.position, _mushroom.Position);
+        float distance = Vector3.Distance(transform.position, _mushroom.Position);
         if (distance < 1f)
         {
             _isGathering = true;
@@ -76,7 +77,13 @@ public class EnemyMovementAi : MonoBehaviour
 
     private void SetTarget()
     {
-        _mushroom = Services.Get<CollectionService>().GetNearestMushroom(transform.position);
+        _mushroom = _collectionService.GetNearestMushroom(transform.position);
+
+        if (_mushroom == null)
+        {
+            return;
+        }
+
         transform.LookAt(_mushroom.transform);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         _agent.SetDestination(_mushroom.Position);

@@ -7,8 +7,9 @@ public class MushroomControls : Service, IUpdate
     private AssetsCollection _assetsCollection;
     private MyceliumVisualizer _myceliumVisualizer;
     private SpawnerService _spawnerService;
+    private UIService _uiService;
 
-    private float _currentReloadTime;
+    private float _leftReloadTime;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class MushroomControls : Service, IUpdate
         _assetsCollection = Services.Get<AssetsCollection>();
         _myceliumVisualizer = new MyceliumVisualizer(transform);
         _spawnerService = Services.Get<SpawnerService>();
+        _uiService = Services.Get<UIService>();
 
         MushroomArea area = FindObjectOfType<MushroomArea>();
         _cameraController.SetTarget(area);
@@ -30,7 +32,7 @@ public class MushroomControls : Service, IUpdate
 
         if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
 
-        if (_currentReloadTime <= 0)
+        if (_leftReloadTime <= 0)
         {
             Shoot();
         }
@@ -38,7 +40,9 @@ public class MushroomControls : Service, IUpdate
 
     private void UpdateReloadTime(float delta)
     {
-        _currentReloadTime -= delta;
+        _leftReloadTime -= delta;
+
+        _uiService.ReloadShootUI.UpdateView(_leftReloadTime, _assetsCollection.Settings.MushroomCreatorReloadTime);
     }
 
     private void Shoot()
@@ -53,7 +57,7 @@ public class MushroomControls : Service, IUpdate
         projectile.Hit += OnProjectileHit;
         projectile.Launch(targetPosition);
 
-        _currentReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
+        _leftReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
     }
 
     private void OnProjectileHit(Vector3 position)

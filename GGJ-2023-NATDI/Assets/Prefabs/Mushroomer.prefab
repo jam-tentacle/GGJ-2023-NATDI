@@ -172,6 +172,18 @@ MonoBehaviour:
   isUsed: 0
   leftHandPositionWeight: 0
   leftHandRotationWeight: 0
+--- !u!114 &6707222539994973251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491390235617779366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469972af293154ce2a4ac4ab8d8a5d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5491390235617804998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400050, guid: e57e9b8cd5e115f4f8d7736473e5c7fd, type: 3}

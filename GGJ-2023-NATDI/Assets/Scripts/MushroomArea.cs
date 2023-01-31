@@ -10,12 +10,14 @@ public class MushroomArea : MonoBehaviour, ITarget
 
     private AssetsCollection _assetsCollection;
     private MyceliumVisualizer _myceliumVisualizer;
+    private CollectionService _collectionService;
 
     public Vector3 Position => transform.position;
 
     private void Start()
     {
         _assetsCollection = Services.Get<AssetsCollection>();
+        _collectionService = Services.Get<CollectionService>();
         _myceliumVisualizer = new MyceliumVisualizer(transform);
         UpdateCylinderScale();
 
@@ -26,6 +28,7 @@ public class MushroomArea : MonoBehaviour, ITarget
             Mushroom mushroom = Instantiate(_assetsCollection.MushroomPrefab, transform);
             mushroom.transform.localPosition = new Vector3(pos.x, 0, pos.y);
             _myceliumVisualizer.Add(mushroom.transform.localPosition);
+            _collectionService.AddMushroom(mushroom);
         }
     }
 

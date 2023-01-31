@@ -1,26 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class MyceliumVisualizer : Service
+public class MyceliumVisualizer
 {
-    [SerializeField] private LineRenderer _linePrefab;
-
     private List<Vector3> _points = new();
+    private AssetsCollection _assetsCollection;
+    private Transform _transform;
 
-    public void Add(ITarget target)
+    public MyceliumVisualizer(Transform transform)
+    {
+        _assetsCollection = Services.Get<AssetsCollection>();
+        _transform = transform;
+    }
+
+    public void Add(Vector3 position)
     {
         if (_points.Count > 0)
         {
             foreach (Vector3 point in _points)
             {
-                LineRenderer line = Instantiate(_linePrefab, transform);
-                line.SetPosition(0, target.Position);
+                LineRenderer line = Object.Instantiate(_assetsCollection.LinePrefab, _transform);
+                line.SetPosition(0, position);
                 line.SetPosition(1, point);
             }
         }
 
-        _points.Add(target.Position);
+        _points.Add(position);
     }
 }

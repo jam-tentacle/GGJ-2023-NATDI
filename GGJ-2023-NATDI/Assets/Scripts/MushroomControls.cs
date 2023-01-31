@@ -2,33 +2,33 @@ using UnityEngine;
 
 public class MushroomControls : Service, IUpdate
 {
-    [SerializeField] private Mushroom _mushroomPrefab;
     private CameraController _cameraController;
     private ShootLine _shootLine;
+    private AssetsCollection _assetsCollection;
     private MyceliumVisualizer _myceliumVisualizer;
 
     private void Start()
     {
         _cameraController = Services.Get<CameraController>();
         _shootLine = Services.Get<ShootLine>();
-        _myceliumVisualizer = Services.Get<MyceliumVisualizer>();
+        _assetsCollection = Services.Get<AssetsCollection>();
+        _myceliumVisualizer = new MyceliumVisualizer(transform);
 
-        Mushroom mushroom = FindObjectOfType<Mushroom>();
-        _cameraController.SetTarget(mushroom);
-        _shootLine.SetTarget(mushroom);
-        _myceliumVisualizer.Add(mushroom);
+        MushroomArea area = FindObjectOfType<MushroomArea>();
+        _cameraController.SetTarget(area);
+        _shootLine.SetTarget(area);
+        _myceliumVisualizer.Add(area.Position);
     }
 
     public void GameUpdate(float delta)
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-        {
-            Mushroom mushroom = Instantiate(_mushroomPrefab);
-            mushroom.transform.position = _shootLine.GetEndPosition();
+        if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
 
-            _cameraController.SetTarget(mushroom);
-            _shootLine.SetTarget(mushroom);
-            _myceliumVisualizer.Add(mushroom);
-        }
+        MushroomArea area = Instantiate(_assetsCollection.MushroomAreaPrefab);
+        area.transform.position = _shootLine.GetEndPosition();
+
+        _cameraController.SetTarget(area);
+        _shootLine.SetTarget(area);
+        _myceliumVisualizer.Add(area.Position);
     }
 }

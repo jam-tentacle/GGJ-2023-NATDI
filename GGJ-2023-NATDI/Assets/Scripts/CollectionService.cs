@@ -8,7 +8,11 @@ public class CollectionService : Service
     public void AddMushroom(Mushroom mushroom)
     {
         _mushrooms.Add(mushroom);
-        Debug.Log(_mushrooms.Count);
+    }
+
+    public void RemoveMushroom(Mushroom mushroom)
+    {
+        _mushrooms.Remove(mushroom);
     }
 
     public Mushroom GetNearestMushroom(Vector3 position)

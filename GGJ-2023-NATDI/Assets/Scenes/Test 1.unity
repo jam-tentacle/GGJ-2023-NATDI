@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 1709950971}
   - component: {fileID: 1709950970}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CameraRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,15 +526,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f14340bbb4b343a4b1742550d1d0e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 883150548}
-  distance: 2
-  xSpeed: 10
-  ySpeed: 10
-  yMinLimit: -90
-  yMaxLimit: 90
-  distanceMin: 10
-  distanceMax: 10
-  smoothTime: 2
+  _target: {fileID: 883150548}
+  _distance: 2
+  _xSpeed: 150
+  _ySpeed: 150
+  _yMinLimit: -90
+  _yMaxLimit: 90
+  _smoothTime: 2
 --- !u!4 &1709950971
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class CharacterAnimator : MonoBehaviour
     private static readonly int Moving = Animator.StringToHash("Moving");
 
     private Animator _animator;
+    private float _velocity;
 
     private void Start()
     {

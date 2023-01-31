@@ -11,6 +11,17 @@ public interface ILateUpdate
 {
     void GameLateUpdate(float delta);
 }
+
+public interface IStart
+{
+    void GameStart();
+}
+
+public interface IInject
+{
+    void Inject();
+}
+
 public abstract class Service : MonoBehaviour { }
 
 public class Services : MonoBehaviour
@@ -18,6 +29,8 @@ public class Services : MonoBehaviour
     private static Dictionary<Type, Service> _services = new();
     private static List<IUpdate> _updates = new();
     private static List<ILateUpdate> _lateUpdates = new();
+    private static List<IStart> _starts = new();
+    private static List<IInject> _injects = new();
 
 
     private void Awake()
@@ -36,6 +49,29 @@ public class Services : MonoBehaviour
             {
                 _lateUpdates.Add(lateUpdate);
             }
+
+            if (service is IStart start)
+            {
+                _starts.Add(start);
+            }
+
+            if (service is IInject inject)
+            {
+                _injects.Add(inject);
+            }
+        }
+
+        foreach (IInject inject in _injects)
+        {
+            inject.Inject();
+        }
+    }
+
+    private void Start()
+    {
+        foreach (IStart start in _starts)
+        {
+            start.GameStart();
         }
     }
 

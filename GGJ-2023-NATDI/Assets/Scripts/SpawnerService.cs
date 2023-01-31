@@ -1,12 +1,12 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpawnerService : Service
+public class SpawnerService : Service, IInject
 {
     private CollectionService _collectionService;
     private AssetsCollection _assetsCollection;
 
-    private void Start()
+    public void Inject()
     {
         _collectionService = Services.Get<CollectionService>();
         _assetsCollection = Services.Get<AssetsCollection>();

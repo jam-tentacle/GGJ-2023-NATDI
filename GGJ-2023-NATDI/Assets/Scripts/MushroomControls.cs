@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MushroomControls : Service, IUpdate
+public class MushroomControls : Service, IUpdate, IStart, IInject
 {
     private CameraController _cameraController;
     private ShootLine _shootLine;
@@ -11,15 +11,18 @@ public class MushroomControls : Service, IUpdate
 
     private float _leftReloadTime;
 
-    private void Start()
+    public void Inject()
     {
         _cameraController = Services.Get<CameraController>();
         _shootLine = Services.Get<ShootLine>();
         _assetsCollection = Services.Get<AssetsCollection>();
-        _myceliumVisualizer = new MyceliumVisualizer(transform);
         _spawnerService = Services.Get<SpawnerService>();
         _uiService = Services.Get<UIService>();
+    }
 
+    public void GameStart()
+    {
+        _myceliumVisualizer = new MyceliumVisualizer(transform);
         MushroomArea area = FindObjectOfType<MushroomArea>();
         _cameraController.SetTarget(area);
         _shootLine.SetTarget(area);

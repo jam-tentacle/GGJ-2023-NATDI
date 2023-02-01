@@ -7,10 +7,12 @@ public class CharacterAnimator : MonoBehaviour
 {
     public event Action<Vector3, Quaternion> Move;
     public event Action GatherEnded;
+    public event Action DyingEnded;
 
     private static readonly int VelocityZ = Animator.StringToHash("Velocity Z");
     private static readonly int Moving = Animator.StringToHash("Moving");
     private static readonly int Gather = Animator.StringToHash("Gather");
+    private static readonly int Dying = Animator.StringToHash("Dying");
 
     private Animator _animator;
     private float _velocity;
@@ -34,6 +36,12 @@ public class CharacterAnimator : MonoBehaviour
     {
         _animator.SetTrigger(Gather);
     }
+
+    public void SetDying()
+    {
+        _animator.SetTrigger(Dying);
+    }
+
     private void OnAnimatorMove()
     {
         Move?.Invoke(_animator.deltaPosition, _animator.rootRotation);
@@ -44,6 +52,13 @@ public class CharacterAnimator : MonoBehaviour
     {
         GatherEnded?.Invoke();
         Debug.Log("Gather ended");
+    }
+
+    [UsedImplicitly]
+    public void DyingEnd()
+    {
+        DyingEnded?.Invoke();
+        Debug.Log("Dying ended");
     }
 
     [UsedImplicitly]

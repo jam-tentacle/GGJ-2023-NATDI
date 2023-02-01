@@ -9,8 +9,9 @@ public class EnemyMovementAi : MonoBehaviour
     private Vector3 _walkPoint;
     private bool _alreadyAttacked;
     private bool _walkPointSet;
-    private float _passedTime;
+    private float _passedTime; //TEMP VARIABLE for Dying animation test
     private bool _isGathering;
+    private bool _isDying;
     private CollectionService _collectionService;
 
     private void Start()
@@ -21,6 +22,13 @@ public class EnemyMovementAi : MonoBehaviour
         _agent.updateRotation = true;
         _characterAnimator.Move += OnCharacterMove;
         _characterAnimator.GatherEnded += OnCharacterGatherEnded;
+        _characterAnimator.DyingEnded += OnCharacterDyingEnded;
+    }
+
+    private void OnCharacterDyingEnded()
+    {
+        _isDying = false;
+        Debug.Log(_isDying);
     }
 
     private void OnCharacterGatherEnded()
@@ -42,10 +50,16 @@ public class EnemyMovementAi : MonoBehaviour
     {
         _characterAnimator.Move -= OnCharacterMove;
         _characterAnimator.GatherEnded -= OnCharacterGatherEnded;
+        _characterAnimator.DyingEnded -= OnCharacterDyingEnded;
     }
 
     private void FixedUpdate()
     {
+        if (_isDying)
+        {
+            return;
+        }
+
         if (_isGathering)
         {
             return;
@@ -73,6 +87,12 @@ public class EnemyMovementAi : MonoBehaviour
         _characterAnimator.SetVelocityZ(_agent.velocity.magnitude);
         _characterAnimator.SetMoving(moving);
         _agent.nextPosition = transform.position;
+    }
+
+    private void KillCharacter()
+    {
+        _characterAnimator.SetDying();
+        // Destroy(gameObject);
     }
 
     private void SetTarget()

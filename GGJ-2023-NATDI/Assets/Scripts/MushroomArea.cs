@@ -13,6 +13,7 @@ public class MushroomArea : MonoBehaviour, ITarget
     private SpawnerService _spawnerService;
 
     public Vector3 Position => transform.position;
+    public Vector3 ShootTargetPosition => transform.position;
     public Vector3 Velocity => Vector3.zero;
 
     private float _currentRespawnTime;

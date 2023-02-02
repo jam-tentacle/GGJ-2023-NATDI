@@ -61,7 +61,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
         Projectile projectile = Instantiate(_assetsCollection.SporePrefab);
         Vector3 position = _cameraController.Target.Position;
-        position.y = 0.5f;
+        position.y += 0.5f;
         projectile.transform.position = position;
         projectile.Hit += OnProjectileHit;
         projectile.Launch(targetPosition);
@@ -71,8 +71,6 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void OnProjectileHit(Vector3 position)
     {
-        position.y = 0;
-
         SpawnMushroomArea(position);
     }
 

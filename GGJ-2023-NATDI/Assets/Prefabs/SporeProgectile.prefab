@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1376176753255927936}
-  _impulseMultiplier: 10
+  _impulseMultiplier: 20
 --- !u!54 &1376176753255927936
 Rigidbody:
   m_ObjectHideFlags: 0

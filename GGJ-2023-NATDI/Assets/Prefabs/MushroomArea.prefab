@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cylinder: {fileID: 3201849906164501072}
   _radius: 2
-  _count: {x: 1, y: 1}
+  _count: {x: 1, y: 10}
+  _respawnTime: 10
 --- !u!1 &2746806533186616445
 GameObject:
   m_ObjectHideFlags: 0

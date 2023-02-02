@@ -1,12 +1,13 @@
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class MushroomArea : MonoBehaviour, ITarget
 {
     [SerializeField] private Transform _cylinder;
     [SerializeField] private float _radius = 2;
-    [MinMaxSlider(1, 10)] [SerializeField] private Vector2Int _count = new(1, 1);
+    [MinMaxSlider(1, 20)] [SerializeField] private Vector2Int _count = new(1, 1);
+    [SerializeField] private float _respawnTime = 10f;
 
     private MyceliumVisualizer _myceliumVisualizer;
     private SpawnerService _spawnerService;
@@ -14,17 +15,65 @@ public class MushroomArea : MonoBehaviour, ITarget
     public Vector3 Position => transform.position;
     public Vector3 Velocity => Vector3.zero;
 
+    private float _currentRespawnTime;
+
+    private LinkedList<Mushroom> _mushrooms = new LinkedList<Mushroom>();
+
     private void Start()
     {
         _spawnerService = Services.Get<SpawnerService>();
         _myceliumVisualizer = new MyceliumVisualizer(transform);
         UpdateCylinderScale();
 
-        int count = Random.Range(_count.x, _count.y);
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < _count.x; i++)
         {
-            Mushroom mushroom = _spawnerService.SpawnMushroom(transform, _radius);
-            _myceliumVisualizer.Add(mushroom.transform.localPosition);
+            SpawnMushroom();
+        }
+    }
+
+    private void SpawnMushroom()
+    {
+        Mushroom mushroom = _spawnerService.SpawnMushroom(transform, _radius);
+        _mushrooms.AddLast(mushroom);
+        _myceliumVisualizer.Add(mushroom.transform.localPosition);
+    }
+
+    private void Update()
+    {
+        TryClear();
+
+        TryUpdateRespawn(Time.deltaTime);
+    }
+
+    private void TryClear()
+    {
+        var currentNode = _mushrooms.First;
+        while (currentNode != null)
+        {
+            var next = currentNode.Next;
+            if (currentNode.Value == null)
+            {
+                _mushrooms.Remove(currentNode);
+            }
+
+            currentNode = next;
+        }
+    }
+
+    private void TryUpdateRespawn(float delta)
+    {
+        if (_count.y <= _mushrooms.Count)
+        {
+            _currentRespawnTime = 0f;
+            return;
+        }
+
+        _currentRespawnTime += delta;
+
+        if (_respawnTime <= _currentRespawnTime)
+        {
+            _currentRespawnTime = 0f;
+            SpawnMushroom();
         }
     }
 

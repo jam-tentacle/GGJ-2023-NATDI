@@ -66,6 +66,4 @@ public class CharacterAnimator : MonoBehaviour
 
     [UsedImplicitly]
     private void FootR() { }
-
-
 }

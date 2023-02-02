@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2151019122430239324}
   - component: {fileID: 2151019122430239325}
+  - component: {fileID: 9161902374100741207}
   - component: {fileID: 2151019122430239322}
   - component: {fileID: 6573361584099474407}
   m_Layer: 0
@@ -49,6 +50,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 2151019122430239322}
   _characterAnimator: {fileID: 6707222539994973251}
+  _damageable: {fileID: 9161902374100741207}
+--- !u!114 &9161902374100741207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151019122430239327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59408bb9c5e241ed834cac176344dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthMax: 100
 --- !u!195 &2151019122430239322
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class EnemyMovementAi : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private CharacterAnimator _characterAnimator;
+    [SerializeField] private Damageable _damageable;
     private Mushroom _mushroom;
     private Vector3 _walkPoint;
     private bool _alreadyAttacked;
@@ -21,6 +22,19 @@ public class EnemyMovementAi : MonoBehaviour
         _characterAnimator.Move += OnCharacterMove;
         _characterAnimator.GatherEnded += OnCharacterGatherEnded;
         _characterAnimator.DyingEnded += OnCharacterDyingEnded;
+        _damageable.HealthChanged += OnHealthChanged;
+        _damageable.Died += OnDied;
+    }
+
+    private void OnDied()
+    {
+        Debug.Log("Died");
+        _characterAnimator.SetDying();
+    }
+
+    private void OnHealthChanged(float deltaHealth, Vector3 impulse)
+    {
+        Debug.Log("Health changed");
     }
 
     private void OnCharacterDyingEnded() => Destroy(gameObject);
@@ -46,10 +60,18 @@ public class EnemyMovementAi : MonoBehaviour
         _characterAnimator.Move -= OnCharacterMove;
         _characterAnimator.GatherEnded -= OnCharacterGatherEnded;
         _characterAnimator.DyingEnded -= OnCharacterDyingEnded;
+        _damageable.HealthChanged -= OnHealthChanged;
+        _damageable.Died -= OnDied;
     }
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("HitReceived");
+            _damageable.ReceiveHit(50f, Vector3.zero);
+        }
+
         if (_isGathering)
         {
             return;
@@ -77,11 +99,6 @@ public class EnemyMovementAi : MonoBehaviour
         _characterAnimator.SetVelocityZ(_agent.velocity.magnitude);
         _characterAnimator.SetMoving(moving);
         _agent.nextPosition = transform.position;
-    }
-
-    private void KillCharacter()
-    {
-        _characterAnimator.SetDying();
     }
 
     private void SetTarget()

@@ -8,6 +8,8 @@ public class MushroomArea : MonoBehaviour, ITarget
     [SerializeField] private float _radius = 2;
     [MinMaxSlider(1, 20)] [SerializeField] private Vector2Int _count = new(1, 1);
     [SerializeField] private float _respawnTime = 10f;
+    [SerializeField] private ChooseMushroomAreaTarget _chooseMushroomAreaTarget;
+    public ChooseMushroomAreaTarget ChooseMushroomAreaTarget => _chooseMushroomAreaTarget;
 
     private MyceliumVisualizer _myceliumVisualizer;
     private SpawnerService _spawnerService;

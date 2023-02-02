@@ -44,6 +44,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2eb1659c68442b1857004dee252461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MushroomAreas: []
+--- !u!1 &1161961971292542122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 767186817884769252}
+  - component: {fileID: 6830189163285093150}
+  m_Layer: 0
+  m_Name: ChooseMushroomAreaService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &767186817884769252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161961971292542122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7203380470057029567}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6830189163285093150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161961971292542122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98e1f6ad2054792a006ed015bee2022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chooseMushroomUIMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &7203380468713970848
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +410,7 @@ Transform:
   - {fileID: 2119459173308760468}
   - {fileID: 8614108957226210746}
   - {fileID: 6700062815830585883}
+  - {fileID: 767186817884769252}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -515,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81c28545f72d4f2185eb0b5a2faf6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxMushroomAreas: 50
 --- !u!1 &8317294037125633525
 GameObject:
   m_ObjectHideFlags: 0

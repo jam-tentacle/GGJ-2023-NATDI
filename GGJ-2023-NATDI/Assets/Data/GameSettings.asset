@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   MushroomCreatorReloadTime: 10
+  TowerDamage: 1000
+  ChooseMushroomUIMask:
+    serializedVersion: 2
+    m_Bits: 1024

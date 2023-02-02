@@ -69,7 +69,7 @@ namespace NATDI.Tower
             {
                 // use speed
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithSpeed(startPosition,
-                    enemy.Position,
+                    enemy.ShootTargetPosition,
                     enemy.Velocity,
                     ballisticProjectile.startSpeed,
                     ballisticProjectile.arcPreference,
@@ -80,7 +80,7 @@ namespace NATDI.Tower
             {
                 // use angle
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithAngle(startPosition,
-                    enemy.Position,
+                    enemy.ShootTargetPosition,
                     enemy.Velocity,
                     ballisticProjectile.firingAngle,
                     ballisticProjectile.arcPreference,
@@ -107,7 +107,7 @@ namespace NATDI.Tower
 
         protected virtual void AimTurret()
         {
-            Vector3 targetPosition = _enemyTarget.Position;
+            Vector3 targetPosition = _enemyTarget.ShootTargetPosition;
             /*if (onlyYTurretRotation)
         {
             targetPosition.y = transform.position.y;

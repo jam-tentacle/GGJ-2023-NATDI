@@ -8,6 +8,7 @@ public class Mushroom : MonoBehaviour, ITarget
     [SerializeField] private Rigidbody _rb;
 
     public Vector3 Position => transform.position;
+    public Vector3 ShootTargetPosition => transform.position;
     public Vector3 Velocity => _rb.velocity;
 
     private void Start()

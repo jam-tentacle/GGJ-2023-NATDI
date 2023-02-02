@@ -1,7 +1,9 @@
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 public class MushroomControls : Service, IUpdate, IStart, IInject
 {
+    [SerializeField] private int _maxMushroomAreas = 50;
     private CameraController _cameraController;
     private ShootLine _shootLine;
     private AssetsCollection _assetsCollection;
@@ -50,6 +52,10 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void Shoot()
     {
+        if (Services.Get<CollectionService>().MushroomAreas.Count >= _maxMushroomAreas)
+        {
+            return;
+        }
         Vector3 targetPosition = _shootLine.GetEndPosition();
         targetPosition.y = 0;
 

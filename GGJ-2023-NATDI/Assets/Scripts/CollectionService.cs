@@ -4,6 +4,8 @@ using UnityEngine;
 public class CollectionService : Service
 {
     private List<Mushroom> _mushrooms = new();
+    private List<EnemyMovementAi> _mushroomers = new();
+    public List<MushroomArea> MushroomAreas = new();
 
     public void AddMushroom(Mushroom mushroom)
     {
@@ -15,18 +17,33 @@ public class CollectionService : Service
         _mushrooms.Remove(mushroom);
     }
 
+    public void AddMushroomer(EnemyMovementAi mushrromer)
+    {
+        _mushroomers.Add(mushrromer);
+    }
+
     public Mushroom GetNearestMushroom(Vector3 position)
     {
-        Mushroom nearest = null;
+        return GetNearestTarget(position, _mushrooms);
+    }
+
+    public EnemyMovementAi GetNearestMushroomer(Vector3 position)
+    {
+        return GetNearestTarget<EnemyMovementAi>(position, _mushroomers);
+    }
+
+    private T GetNearestTarget<T>(Vector3 position, ICollection<T> collection) where T : ITarget
+    {
+        T nearest = default(T);
         float minDistance = float.MaxValue;
-        foreach (Mushroom mushroom in _mushrooms)
+        foreach (T candidate in collection)
         {
-            float distance = Vector3.Distance(position, mushroom.Position);
+            float distance = Vector3.Distance(position, candidate.Position);
 
             if (distance >= minDistance) continue;
 
             minDistance = distance;
-            nearest = mushroom;
+            nearest = candidate;
         }
 
         return nearest;

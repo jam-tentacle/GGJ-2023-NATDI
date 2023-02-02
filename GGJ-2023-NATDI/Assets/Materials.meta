@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:GGJ-2023-NATDI/Assets/UnityTechnologies/TowerDefenseTemplate.meta
+guid: 3630c06e97fb32c46bdc2fb2b28bf277
+========
 guid: 93a7ae83620ca0f48adad3973447759e
+>>>>>>>> e552156e4d69324371685d0bc43d25a21c1a9d29:GGJ-2023-NATDI/Assets/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

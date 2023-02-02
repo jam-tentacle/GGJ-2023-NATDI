@@ -51,7 +51,6 @@ public class CharacterAnimator : MonoBehaviour
     public void GatherEnd()
     {
         GatherEnded?.Invoke();
-        Debug.Log("Gather ended");
     }
 
     [UsedImplicitly]

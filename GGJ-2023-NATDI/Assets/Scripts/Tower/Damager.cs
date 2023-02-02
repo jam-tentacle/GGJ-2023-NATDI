@@ -32,6 +32,12 @@ namespace NATDI.Tower
 
 			pfx.transform.position = transform.position;
 			pfx.Play();
-		}
+            var receiver = other.gameObject.GetComponent<Damageable>();
+            Debug.Log($"tower projectile collision w: {other.gameObject.name}");
+            if (receiver != null)
+            {
+                receiver.ReceiveHit(Services.Get<AssetsCollection>().Settings.TowerDamage, GetComponent<Rigidbody>().velocity);
+            }
+        }
 	}
 }

@@ -4,4 +4,5 @@
 public class GameSettings : ScriptableObject
 {
     public float MushroomCreatorReloadTime = 10f;
+    public float TowerDamage { get; set; } = 1000f;
 }

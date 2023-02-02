@@ -22,6 +22,11 @@ public class CollectionService : Service
         _mushroomers.Add(mushrromer);
     }
 
+    public void RemoveMushroomer(EnemyMovementAi value)
+    {
+        _mushroomers.Remove(value);
+    }
+
     public Mushroom GetNearestMushroom(Vector3 position)
     {
         return GetNearestTarget(position, _mushrooms);

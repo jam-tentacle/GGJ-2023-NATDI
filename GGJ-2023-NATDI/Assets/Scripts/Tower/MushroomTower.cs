@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace NATDI.Tower
@@ -36,9 +37,14 @@ namespace NATDI.Tower
 
         protected virtual void FireProjectile()
         {
-            if (_enemyTarget == null)
+            if (_enemyTarget is not { IsAlive: true })
             {
                 _enemyTarget = _collection.GetNearestMushroomer(transform.position);
+            }
+
+            if (_enemyTarget is null)
+            {
+                return;
             }
 
             var newProjectile = Instantiate(_damagerProjectile);
@@ -69,7 +75,7 @@ namespace NATDI.Tower
             {
                 // use speed
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithSpeed(startPosition,
-                    enemy.Position,
+                    enemy.ShootTargetPosition,
                     enemy.Velocity,
                     ballisticProjectile.startSpeed,
                     ballisticProjectile.arcPreference,
@@ -80,7 +86,7 @@ namespace NATDI.Tower
             {
                 // use angle
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithAngle(startPosition,
-                    enemy.Position,
+                    enemy.ShootTargetPosition,
                     enemy.Velocity,
                     ballisticProjectile.firingAngle,
                     ballisticProjectile.arcPreference,
@@ -107,7 +113,7 @@ namespace NATDI.Tower
 
         protected virtual void AimTurret()
         {
-            Vector3 targetPosition = _enemyTarget.Position;
+            Vector3 targetPosition = _enemyTarget.ShootTargetPosition;
             /*if (onlyYTurretRotation)
         {
             targetPosition.y = transform.position.y;

@@ -6,6 +6,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private Damageable _damageable;
+    [SerializeField] private Transform _shootPoint;
     private Mushroom _mushroom;
     private Vector3 _walkPoint;
     private bool _alreadyAttacked;
@@ -14,7 +15,9 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     private CollectionService _collectionService;
 
     public Vector3 Position => transform.position;
+    public Vector3 ShootTargetPosition => _shootPoint.position;
     public Vector3 Velocity => _agent.velocity;
+    public bool IsAlive => this != null;
 
     private void Start()
     {
@@ -41,7 +44,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         Debug.Log("Health changed");
     }
 
-    private void OnCharacterDyingEnded() => Destroy(gameObject);
+    private void OnCharacterDyingEnded() => Services.Get<SpawnerService>().DespawnMushroomer(this);
 
     private void OnCharacterGatherEnded()
     {

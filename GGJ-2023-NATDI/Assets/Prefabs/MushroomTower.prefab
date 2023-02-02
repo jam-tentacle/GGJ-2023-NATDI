@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 643385037501360028}
   - component: {fileID: 6681268409096105622}
   - component: {fileID: 5176923428019831055}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: RocketProjectile_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2459603811126720208}
   - component: {fileID: 2474031886663526198}
   - component: {fileID: 2484193644336098516}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Rocket_Projectile_Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2467002216802970082}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: FireTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 2459530730292501450}
   - component: {fileID: 2474138393244629068}
   - component: {fileID: 2485716369106531752}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Rocket_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

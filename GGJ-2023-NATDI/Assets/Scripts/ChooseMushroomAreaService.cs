@@ -30,9 +30,18 @@ public class ChooseMushroomAreaService : Service, IUpdate
 
     private void UpdateChooseMushroomAreaTarget()
     {
-        var ray = _camera.ViewportPointToRay(ScreenCenter);
+        var cameraRay = _camera.ViewportPointToRay(ScreenCenter);
 
-        var count = Physics.RaycastNonAlloc(ray, _hits, _rayLength, _chooseMushroomUIMask);
+        var direction = cameraRay.direction;
+
+        if (_cameraController.Target is not MushroomArea cameraTarget)
+        {
+            return;
+        }
+
+        var newRay = new Ray(cameraTarget.ChooseMushroomAreaTarget.StartRayPoint.position, direction);
+
+        var count = Physics.RaycastNonAlloc(newRay, _hits, _rayLength, _chooseMushroomUIMask);
 
         if (count <= 0)
         {
@@ -48,7 +57,7 @@ public class ChooseMushroomAreaService : Service, IUpdate
                 continue;
             }
 
-            if (_cameraController.Target is MushroomArea area && area.ChooseMushroomAreaTarget == target)
+            if (cameraTarget.ChooseMushroomAreaTarget == target)
             {
                 continue;
             }

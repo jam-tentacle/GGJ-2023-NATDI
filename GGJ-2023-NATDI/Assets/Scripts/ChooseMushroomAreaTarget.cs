@@ -6,6 +6,9 @@ public class ChooseMushroomAreaTarget : MonoBehaviour
     [SerializeField] private ParticleSystem _effect;
     [SerializeField] private GameObject _icon;
     [SerializeField] private MushroomArea _mushroomArea;
+    [SerializeField] private Transform _startRayPoint;
+    public Transform StartRayPoint => _startRayPoint;
+
     public MushroomArea MushroomArea => _mushroomArea;
 
     private bool _isHighlight;

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:GGJ-2023-NATDI/Assets/Multimedia/Tower.meta
+guid: 34a9e4ca0c8d8b74ba9a9b2091f5fa08
+========
 guid: 29b5f5335e11e254588d316ed9a853aa
+>>>>>>>> e552156e4d69324371685d0bc43d25a21c1a9d29:GGJ-2023-NATDI/Assets/Cartoon_Texture_Pack.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

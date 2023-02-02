@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:GGJ-2023-NATDI/Assets/UnityTechnologies.meta
+guid: 3afb0543418ccf441bbdefc808374158
+========
 guid: 8efdfe5095ddb084593b6be3a2c9b0fe
+>>>>>>>> e552156e4d69324371685d0bc43d25a21c1a9d29:GGJ-2023-NATDI/Assets/Data.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

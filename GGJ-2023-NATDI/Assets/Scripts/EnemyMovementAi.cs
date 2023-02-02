@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovementAi : MonoBehaviour
+public class EnemyMovementAi : MonoBehaviour, ITarget
 {
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private CharacterAnimator _characterAnimator;
@@ -12,6 +12,9 @@ public class EnemyMovementAi : MonoBehaviour
     private bool _isGathering;
     private CollectionService _collectionService;
 
+    public Vector3 Position => transform.position;
+    public Vector3 Velocity => _agent.velocity;
+
     private void Start()
     {
         _collectionService = Services.Get<CollectionService>();
@@ -21,6 +24,7 @@ public class EnemyMovementAi : MonoBehaviour
         _characterAnimator.Move += OnCharacterMove;
         _characterAnimator.GatherEnded += OnCharacterGatherEnded;
         _characterAnimator.DyingEnded += OnCharacterDyingEnded;
+        Services.Get<CollectionService>().AddMushroomer(this);
     }
 
     private void OnCharacterDyingEnded() => Destroy(gameObject);

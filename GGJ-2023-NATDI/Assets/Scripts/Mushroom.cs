@@ -4,9 +4,11 @@ using UnityEngine;
 public class Mushroom : MonoBehaviour, ITarget
 {
     [SerializeField] private Transform _leg;
-    // [SerializeField] private Transform _cap;
+    //[SerializeField] private Transform _cap;
+    [SerializeField] private Rigidbody _rb;
 
     public Vector3 Position => transform.position;
+    public Vector3 Velocity => _rb.velocity;
 
     private void Start()
     {

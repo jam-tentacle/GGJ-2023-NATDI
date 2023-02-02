@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:GGJ-2023-NATDI/Assets/Scripts/Tower.meta
+guid: d6b54c570e8456c479e57ff9d1fe353e
+folderAsset: yes
+========
 guid: 212833575171678469ac175fd42be91f
+>>>>>>>> e552156e4d69324371685d0bc43d25a21c1a9d29:GGJ-2023-NATDI/Assets/Scenes/Mushroom builder.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

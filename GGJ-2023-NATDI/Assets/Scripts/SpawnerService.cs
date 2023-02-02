@@ -31,6 +31,7 @@ public class SpawnerService : Service, IInject
     public MushroomArea SpawnMushroomArea(Vector3 position)
     {
         MushroomArea area = Instantiate(_assetsCollection.MushroomAreaPrefab);
+        Services.Get<CollectionService>().MushroomAreas.Add(area);
         area.transform.position = position;
 
         return area;

@@ -31,7 +31,6 @@ public class SporeProjectile : Projectile
     {
         _mushroomAreaEntered = Physics.SphereCast(transform.position + Vector3.up * 10, 1f, Vector3.down,
             out RaycastHit hitInfo, Mathf.Infinity, _layerMask);
-        Debug.Log(_mushroomAreaEntered);
 
         if (_projectileExist)
         {

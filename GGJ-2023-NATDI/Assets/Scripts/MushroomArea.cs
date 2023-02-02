@@ -15,6 +15,7 @@ public class MushroomArea : MonoBehaviour, ITarget
     public Vector3 Position => transform.position;
     public Vector3 ShootTargetPosition => transform.position;
     public Vector3 Velocity => Vector3.zero;
+    public bool IsAlive => this != null;
 
     private float _currentRespawnTime;
 

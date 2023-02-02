@@ -17,6 +17,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     public Vector3 Position => transform.position;
     public Vector3 ShootTargetPosition => _shootPoint.position;
     public Vector3 Velocity => _agent.velocity;
+    public bool IsAlive => this != null;
 
     private void Start()
     {
@@ -43,7 +44,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         Debug.Log("Health changed");
     }
 
-    private void OnCharacterDyingEnded() => Destroy(gameObject);
+    private void OnCharacterDyingEnded() => Services.Get<SpawnerService>().DespawnMushroomer(this);
 
     private void OnCharacterGatherEnded()
     {

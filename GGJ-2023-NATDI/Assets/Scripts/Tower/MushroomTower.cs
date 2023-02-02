@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace NATDI.Tower
@@ -36,9 +37,14 @@ namespace NATDI.Tower
 
         protected virtual void FireProjectile()
         {
-            if (_enemyTarget == null)
+            if (_enemyTarget is not { IsAlive: true })
             {
                 _enemyTarget = _collection.GetNearestMushroomer(transform.position);
+            }
+
+            if (_enemyTarget is null)
+            {
+                return;
             }
 
             var newProjectile = Instantiate(_damagerProjectile);

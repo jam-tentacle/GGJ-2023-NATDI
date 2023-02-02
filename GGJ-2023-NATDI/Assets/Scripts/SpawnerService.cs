@@ -28,6 +28,12 @@ public class SpawnerService : Service, IInject
         Destroy(mushroom.gameObject);
     }
 
+    public void DespawnMushroomer(EnemyMovementAi value)
+    {
+        _collectionService.RemoveMushroomer(value);
+        Destroy(value.gameObject);
+    }
+
     public MushroomArea SpawnMushroomArea(Vector3 position)
     {
         MushroomArea area = Instantiate(_assetsCollection.MushroomAreaPrefab);

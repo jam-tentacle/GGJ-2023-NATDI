@@ -140,8 +140,8 @@ MonoBehaviour:
   _distance: 2
   _xSpeed: 150
   _ySpeed: 150
-  _yMinLimit: -90
-  _yMaxLimit: 90
+  _yMinLimit: -45
+  _yMaxLimit: 45
   _smoothTime: 2
 --- !u!1 &7203380468955606859
 GameObject:

@@ -35,9 +35,10 @@ public class EnemyMovementAi : MonoBehaviour
 
     private void OnCharacterMove(Vector3 delta, Quaternion rotation)
     {
-        transform.position += delta;
-
-        transform.rotation = rotation;
+        Vector3 pos = transform.position;
+        pos += delta;
+        pos.y = _agent.nextPosition.y;
+        transform.position = pos;
     }
 
     private void OnDestroy()

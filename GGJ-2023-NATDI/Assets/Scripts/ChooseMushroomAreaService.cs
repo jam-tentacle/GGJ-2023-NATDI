@@ -55,6 +55,11 @@ public class ChooseMushroomAreaService : Service, IUpdate
         {
             var target = _hits[i].collider.GetComponent<ChooseMushroomAreaTarget>();
 
+            if (target == null)
+            {
+                continue;
+            }
+
             if (_target == target)
             {
                 continue;

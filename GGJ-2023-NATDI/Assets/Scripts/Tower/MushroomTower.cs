@@ -18,10 +18,12 @@ namespace NATDI.Tower
         private ITarget _enemyTarget;
         private float _currentFireCooldown;
         private float _timeSinceLastFire;
+        private AssetsCollection _assetsCollection;
 
         void Start()
         {
             _collection = Services.Get<CollectionService>();
+            _assetsCollection = Services.Get<AssetsCollection>();
         }
 
         void Update()
@@ -39,7 +41,7 @@ namespace NATDI.Tower
         {
             if (_enemyTarget is not { IsAlive: true })
             {
-                _enemyTarget = _collection.GetNearestMushroomer(transform.position);
+                _enemyTarget = _collection.GetNearestMushroomer(transform.position, _assetsCollection.Settings.FireTowerRadius);
             }
 
             if (_enemyTarget is null)

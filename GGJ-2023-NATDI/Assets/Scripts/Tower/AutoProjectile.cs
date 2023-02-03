@@ -34,16 +34,26 @@ public class AutoProjectile : MonoBehaviour
         {
             _lastEndPoint = _to.ShootTargetPosition;
 
-            transform.position = Vector3.Lerp(_startPoint, _lastEndPoint, Mathf.Clamp01(_currentTime / _totalTime));
+            var newPosition = Vector3.Lerp(_startPoint, _lastEndPoint, Mathf.Clamp01(_currentTime / _totalTime));
+
+            transform.position = GetNewPositionWithY(newPosition);
         }
         else
         {
-            transform.position = Vector3.Lerp(_startPoint, _lastEndPoint, _currentTime / _totalTime);
+            var newPosition = Vector3.Lerp(_startPoint, _lastEndPoint, _currentTime / _totalTime);
+
+            transform.position = GetNewPositionWithY(newPosition);
 
             if (_currentTime > _totalTime)
             {
                 Destroy(gameObject);
             }
         }
+    }
+
+    public Vector3 GetNewPositionWithY(Vector3 position)
+    {
+        position.y += _heightCurve.Evaluate(_currentTime / _totalTime);
+        return position;
     }
 }

@@ -78,29 +78,11 @@ namespace NATDI.Tower
             }
 
             autoProjectile.Fire(startPosition, enemy);
-
-            // PlayParticles(_fireParticleSystem, startPosition, targetPoint);
         }
-
-        // public void PlayParticles(ParticleSystem particleSystemToPlay, Vector3 origin, Vector3 lookPosition)
-        // {
-        //     if (particleSystemToPlay == null)
-        //     {
-        //         return;
-        //     }
-        //
-        //     particleSystemToPlay.transform.position = origin;
-        //     particleSystemToPlay.transform.LookAt(lookPosition);
-        //     particleSystemToPlay.Play();
-        // }
 
         protected virtual void AimTurret()
         {
             Vector3 targetPosition = _enemyTarget.ShootTargetPosition;
-            /*if (onlyYTurretRotation)
-        {
-            targetPosition.y = transform.position.y;
-        }*/
             Vector3 direction = targetPosition - transform.position;
             Quaternion look = Quaternion.LookRotation(direction, Vector3.up);
             Vector3 lookEuler = look.eulerAngles;

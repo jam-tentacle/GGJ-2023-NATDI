@@ -15,11 +15,13 @@ public class ChooseMushroomAreaService : Service, IUpdate
     float _rayLength = 500f;
 
     private ChooseMushroomAreaTarget _target;
+    private ShootLine _shootLine;
 
     private void Start()
     {
         _camera = Camera.main;
         _cameraController = Services.Get<CameraController>();
+        _shootLine = Services.Get<ShootLine>();
     }
 
     public void GameUpdate(float delta)
@@ -91,6 +93,7 @@ public class ChooseMushroomAreaService : Service, IUpdate
         }
 
         _cameraController.SetTarget(_target.MushroomArea);
+        _shootLine.SetTarget(_target.MushroomArea);
         _target.StopHighlight();
         _target = null;
     }

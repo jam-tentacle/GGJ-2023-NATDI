@@ -33,6 +33,9 @@ public class MushroomArea : MonoBehaviour, ITarget
         {
             SpawnMushroom();
         }
+
+        Painter painter = FindObjectOfType<Painter>();
+        painter.Modify(transform.position);
     }
 
     private void SpawnMushroom()

@@ -92,6 +92,7 @@ MonoBehaviour:
   _chooseMushroomUIMask:
     serializedVersion: 2
     m_Bits: 1024
+  _radius: 5
 --- !u!1 &7203380468713970848
 GameObject:
   m_ObjectHideFlags: 0

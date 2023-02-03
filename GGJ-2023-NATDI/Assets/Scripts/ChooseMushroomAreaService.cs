@@ -3,6 +3,7 @@
 public class ChooseMushroomAreaService : Service, IUpdate
 {
     [SerializeField] private LayerMask _chooseMushroomUIMask;
+    [SerializeField] private float _radius;
 
     private RaycastHit[] _hits = new RaycastHit[2];
 
@@ -41,7 +42,7 @@ public class ChooseMushroomAreaService : Service, IUpdate
 
         var newRay = new Ray(cameraTarget.ChooseMushroomAreaTarget.StartRayPoint.position, direction);
 
-        var count = Physics.RaycastNonAlloc(newRay, _hits, _rayLength, _chooseMushroomUIMask);
+        var count = Physics.SphereCastNonAlloc(newRay, _radius, _hits, _rayLength, _chooseMushroomUIMask);
 
         if (count <= 0)
         {

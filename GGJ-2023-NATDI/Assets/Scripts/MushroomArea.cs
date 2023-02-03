@@ -42,7 +42,6 @@ public class MushroomArea : MonoBehaviour, ITarget
     {
         Mushroom mushroom = _spawnerService.SpawnMushroom(transform, _radius);
         _mushrooms.AddLast(mushroom);
-        _myceliumVisualizer.Add(mushroom.transform.localPosition);
     }
 
     private void Update()

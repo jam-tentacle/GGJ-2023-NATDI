@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace NATDI
 {
-    public class FlowService : Service, IUpdate
+    public class FlowService : Service
     {
         public FlowState CurrentFlowState { get; private set; } = FlowState.Playing;
 
@@ -40,7 +40,7 @@ namespace NATDI
             Services.Get<UIService>().MainMenu.SetActive(false);
         }
 
-        public void GameUpdate(float delta)
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {

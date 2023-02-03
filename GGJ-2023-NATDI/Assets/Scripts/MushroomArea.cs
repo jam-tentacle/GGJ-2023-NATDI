@@ -21,7 +21,7 @@ public class MushroomArea : MonoBehaviour, ITarget
 
     private float _currentRespawnTime;
 
-    private LinkedList<Mushroom> _mushrooms = new LinkedList<Mushroom>();
+    private LinkedList<Mushroom> _mushrooms = new();
 
     private void Start()
     {

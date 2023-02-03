@@ -49,6 +49,11 @@ namespace NATDI.Tower
                 return;
             }
 
+            if (!_enemyTarget.IsAlive)
+            {
+                return;
+            }
+
             var newProjectile = Instantiate(_damagerProjectile);
 
             Launch(_enemyTarget, newProjectile.gameObject, _projectilePoint);
@@ -64,54 +69,30 @@ namespace NATDI.Tower
             AimTurret();
             projectile.SetActive(true);
             Vector3 startPosition = firingPoint.position;
-            var ballisticProjectile = projectile.GetComponent<BallisticProjectile>();
-            if (ballisticProjectile == null)
+            var autoProjectile = projectile.GetComponent<AutoProjectile>();
+            if (autoProjectile == null)
             {
                 Debug.LogError("No ballistic projectile attached to projectile");
                 DestroyImmediate(projectile);
                 return;
             }
 
-            Vector3 targetPoint;
-            if (ballisticProjectile.fireMode == BallisticFireMode.UseLaunchSpeed)
-            {
-                // use speed
-                targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithSpeed(startPosition,
-                    enemy.ShootTargetPosition,
-                    enemy.Velocity,
-                    ballisticProjectile.startSpeed,
-                    ballisticProjectile.arcPreference,
-                    Physics.gravity.y,
-                    4);
-            }
-            else
-            {
-                // use angle
-                targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithAngle(startPosition,
-                    enemy.ShootTargetPosition,
-                    enemy.Velocity,
-                    ballisticProjectile.firingAngle,
-                    ballisticProjectile.arcPreference,
-                    Physics.gravity.y,
-                    4);
-            }
+            autoProjectile.Fire(startPosition, enemy);
 
-            ballisticProjectile.FireAtPoint(startPosition, targetPoint);
-            //ballisticProjectile.IgnoreCollision(LevelManager.instance.environmentColliders);
-            PlayParticles(_fireParticleSystem, startPosition, targetPoint);
+            // PlayParticles(_fireParticleSystem, startPosition, targetPoint);
         }
 
-        public void PlayParticles(ParticleSystem particleSystemToPlay, Vector3 origin, Vector3 lookPosition)
-        {
-            if (particleSystemToPlay == null)
-            {
-                return;
-            }
-
-            particleSystemToPlay.transform.position = origin;
-            particleSystemToPlay.transform.LookAt(lookPosition);
-            particleSystemToPlay.Play();
-        }
+        // public void PlayParticles(ParticleSystem particleSystemToPlay, Vector3 origin, Vector3 lookPosition)
+        // {
+        //     if (particleSystemToPlay == null)
+        //     {
+        //         return;
+        //     }
+        //
+        //     particleSystemToPlay.transform.position = origin;
+        //     particleSystemToPlay.transform.LookAt(lookPosition);
+        //     particleSystemToPlay.Play();
+        // }
 
         protected virtual void AimTurret()
         {

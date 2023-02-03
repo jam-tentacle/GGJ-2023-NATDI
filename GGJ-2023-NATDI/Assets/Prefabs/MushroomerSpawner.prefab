@@ -113,9 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mushroomerSpawnData:
   - MushroomerCount: 1
-    OverallSpawnTime: 5
+    OverallSpawnTime: 0
+    SpawnBetweenMushroomerTime: 0
+  - MushroomerCount: 1
+    OverallSpawnTime: 10
     SpawnBetweenMushroomerTime: 2
   - MushroomerCount: 2
-    OverallSpawnTime: 10
+    OverallSpawnTime: 20
     SpawnBetweenMushroomerTime: 2
   _gameObject: {fileID: 2151019122430239327, guid: 9fcf1e70890f7d4498ab9eda16d763d3, type: 3}

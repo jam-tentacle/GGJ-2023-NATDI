@@ -356,7 +356,17 @@ public class Painter : MonoBehaviour
                  {
                      weights[zz] = splat[xx, yy, zz];//grabs the weights from the terrains splat map
                  }
-                 weights[paint] += brush[xx - AOEzMod, yy - AOExMod] * strength *2000; // adds weight to the paint currently selected with the int paint variable
+
+                 // float a = areaOfEffectSizeZ / 2f;
+                 // float b = areaOfEffectSizeX / 2f;
+                 // float c = (xx * xx) / (a * a) + (yy * yy) / (b * b);
+                 // if(c < 15f)
+
+                 Vector2 a = new Vector2(areaOfEffectSizeZ / 2,  areaOfEffectSizeX / 2);
+                 Vector2 b = new Vector2(xx, yy);
+                 float distance = Vector2.Distance(a, b);
+                 if(distance < 5)
+                     weights[paint] += brush[xx - AOEzMod, yy - AOExMod] * strength *2000; // adds weight to the paint currently selected with the int paint variable
                  //this next bit normalizes all the weights so that they will add up to 1
                  float sum = weights.Sum();
                  for (int ww = 0; ww < weights.Length; ww++)

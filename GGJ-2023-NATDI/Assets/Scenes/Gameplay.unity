@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -997,33 +997,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602549136}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &817288087 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7257908237728727146, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
-  m_PrefabInstance: {fileID: 7257908238680901096}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &817288088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817288087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908963f38e01e4fe992a03c0877be529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brushIMG:
-  - {fileID: 2800000, guid: 5c38e2edb8ae412468d3186b2e38caf1, type: 3}
-  brushSelection: 0
-  areaOfEffectSizeX: 10
-  areaOfEffectSizeZ: 15
-  _strength: 1
-  flattenHeight: 0
-  effectType: 4
-  paints: []
-  paint: 3
 --- !u!1 &882881435
 GameObject:
   m_ObjectHideFlags: 0

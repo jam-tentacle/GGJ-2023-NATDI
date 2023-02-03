@@ -92,7 +92,7 @@ MonoBehaviour:
   _chooseMushroomUIMask:
     serializedVersion: 2
     m_Bits: 1024
-  _radius: 5
+  _radius: 6
 --- !u!1 &7203380468713970848
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bda618b67ed34f09a56a0532f15b49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 5
+  _range: 7
   _lineRenderer: {fileID: 7203380468955606860}
 --- !u!1 &7203380469429320523
 GameObject:

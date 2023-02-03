@@ -8,15 +8,14 @@ namespace NATDI.Tower
 
         [Header("Settings")]
         [SerializeField] private float _fireCooldown = 5;
+        [SerializeField] private float _radius = 10f;
         [Header("Links")]
         [SerializeField] private RandomAudioSource _randomAudioSource;
-        [SerializeField] private ParticleSystem _fireParticleSystem;
         [SerializeField] private Transform _projectilePoint;
         [SerializeField] private Damager _damagerProjectile;
 
         private CollectionService _collection;
         private ITarget _enemyTarget;
-        private float _currentFireCooldown;
         private float _timeSinceLastFire;
         private AssetsCollection _assetsCollection;
 
@@ -29,15 +28,16 @@ namespace NATDI.Tower
         void Update()
         {
             _timeSinceLastFire += Time.deltaTime;
-            if (_timeSinceLastFire >= _currentFireCooldown)
+            if (_timeSinceLastFire >= _fireCooldown)
             {
-                _currentFireCooldown = _fireCooldown;
-                _timeSinceLastFire = 0;
-                FireProjectile();
+                if (TryFireProjectile())
+                {
+                    _timeSinceLastFire = 0;
+                }
             }
         }
 
-        protected virtual void FireProjectile()
+        protected virtual bool TryFireProjectile()
         {
             if (_enemyTarget is not { IsAlive: true })
             {
@@ -46,12 +46,17 @@ namespace NATDI.Tower
 
             if (_enemyTarget is null)
             {
-                return;
+                return false;
             }
 
             if (!_enemyTarget.IsAlive)
             {
-                return;
+                return false;
+            }
+
+            if (_radius > Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position))
+            {
+                return false;
             }
 
             var newProjectile = Instantiate(_damagerProjectile);
@@ -62,6 +67,8 @@ namespace NATDI.Tower
             {
                 _randomAudioSource.PlayRandomClip();
             }
+
+            return true;
         }
 
         public void Launch(ITarget enemy, GameObject projectile, Transform firingPoint)

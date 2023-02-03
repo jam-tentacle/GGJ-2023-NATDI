@@ -73,7 +73,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("HitReceived");
             _damageable.ReceiveHit(50f, Vector3.zero);

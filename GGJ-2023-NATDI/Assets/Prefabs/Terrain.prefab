@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7257908237728727149}
   - component: {fileID: 7257908237728727148}
   - component: {fileID: 7257908237728727147}
+  - component: {fileID: 817288088}
   m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
@@ -78,3 +79,25 @@ TerrainCollider:
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 7b19d70b8d9993d4a9cbdf9a0f1f6454, type: 2}
   m_EnableTreeColliders: 0
+--- !u!114 &817288088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7257908237728727146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908963f38e01e4fe992a03c0877be529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brushIMG:
+  - {fileID: 2800000, guid: 5c38e2edb8ae412468d3186b2e38caf1, type: 3}
+  brushSelection: 0
+  areaOfEffectSizeX: 10
+  areaOfEffectSizeZ: 10
+  _strength: 1
+  flattenHeight: 0
+  effectType: 4
+  paints: []
+  paint: 3

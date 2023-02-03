@@ -1,3 +1,4 @@
+using NATDI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class Services : MonoBehaviour
     private static List<ILateUpdate> _lateUpdates = new();
     private static List<IStart> _starts = new();
     private static List<IInject> _injects = new();
-
+    private FlowService _flowService;
 
     private void Awake()
     {
@@ -65,10 +66,17 @@ public class Services : MonoBehaviour
         {
             inject.Inject();
         }
+
+        _flowService = Get<FlowService>();
     }
 
     private void Start()
     {
+        if (_flowService.CurrentFlowState == FlowService.FlowState.Paused)
+        {
+            return;
+        }
+
         foreach (IStart start in _starts)
         {
             start.GameStart();
@@ -77,6 +85,11 @@ public class Services : MonoBehaviour
 
     private void Update()
     {
+        if (_flowService.CurrentFlowState == FlowService.FlowState.Paused)
+        {
+            return;
+        }
+
         foreach (IUpdate update in _updates)
         {
             update.GameUpdate(Time.deltaTime);
@@ -85,10 +98,24 @@ public class Services : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_flowService.CurrentFlowState == FlowService.FlowState.Paused)
+        {
+            return;
+        }
+
         foreach (ILateUpdate update in _lateUpdates)
         {
             update.GameLateUpdate(Time.deltaTime);
         }
+    }
+
+    private void OnDestroy()
+    {
+        _services.Clear();
+        _updates.Clear();
+        _lateUpdates.Clear();
+        _starts.Clear();
+        _injects.Clear();
     }
 
     public static T Get<T>() where T : Service => (T) _services[typeof(T)];

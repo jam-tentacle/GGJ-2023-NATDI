@@ -32,15 +32,14 @@ public class CollectionService : Service
         return GetNearestTarget(position, _mushrooms);
     }
 
-    public EnemyMovementAi GetNearestMushroomer(Vector3 position)
+    public EnemyMovementAi GetNearestMushroomer(Vector3 position, float minDistance)
     {
-        return GetNearestTarget<EnemyMovementAi>(position, _mushroomers);
+        return GetNearestTarget(position, _mushroomers, minDistance);
     }
 
-    private T GetNearestTarget<T>(Vector3 position, ICollection<T> collection) where T : ITarget
+    private T GetNearestTarget<T>(Vector3 position, ICollection<T> collection, float minDistance = float.MaxValue) where T : ITarget
     {
-        T nearest = default(T);
-        float minDistance = float.MaxValue;
+        T nearest = default;
         foreach (T candidate in collection)
         {
             float distance = Vector3.Distance(position, candidate.Position);

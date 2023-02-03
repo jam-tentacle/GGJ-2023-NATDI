@@ -36,12 +36,16 @@ public class CameraController : Service, ILateUpdate
             return;
         }
 
+        Move(delta);
+    }
+
+    private void Move(float delta)
+    {
         transform.position = _target.Position;
         _velocityX += _xSpeed * Input.GetAxis("Mouse X") * _distance * 0.02f;
         _velocityY += _ySpeed * Input.GetAxis("Mouse Y") * 0.02f;
 
         _rotationYAxis += _velocityX;
-        _rotationXAxis -= _velocityY;
         _rotationXAxis = ClampAngle(_rotationXAxis, _yMinLimit, _yMaxLimit);
         Quaternion toRotation = Quaternion.Euler(_rotationXAxis, _rotationYAxis, 0);
 

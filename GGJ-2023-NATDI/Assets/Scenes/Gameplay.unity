@@ -4792,6 +4792,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 7257908237728727146, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257908237728727148, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
+      propertyPath: m_DrawHeightmap
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257908237728727148, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
+      propertyPath: m_DrawInstanced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257908237728727148, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
+      propertyPath: m_ShadowCastingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257908237728727148, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
+      propertyPath: m_DrawTreesAndFoliage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257908237728727148, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257908237728727148, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
+      propertyPath: m_BakeLightProbesForTrees
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7257908237728727149, guid: b6050fbbcaaa8aa4387e748a91f4effe, type: 3}
       propertyPath: m_RootOrder
       value: 2

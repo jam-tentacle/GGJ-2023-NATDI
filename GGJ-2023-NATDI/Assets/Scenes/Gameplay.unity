@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5c57bb9da366e944a8f4ae9be4f413ec, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_Sun: {fileID: 349815073}
+  m_IndirectSpecularColor: {r: 0.15700938, g: 0.4551212, b: 0.6094171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -665,6 +665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670412c3c2d5146729f4c4b60e899f9b, type: 3}
+--- !u!108 &349815073 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7203380470523361172, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+  m_PrefabInstance: {fileID: 1119242112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &387280089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7394670579081548419, guid: 670412c3c2d5146729f4c4b60e899f9b, type: 3}
@@ -1836,6 +1841,18 @@ PrefabInstance:
     - target: {fileID: 7203380470057029567, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203380470523361172, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7122642
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203380470523361172, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: m_Color.g
+      value: 0.72987205
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203380470523361172, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}

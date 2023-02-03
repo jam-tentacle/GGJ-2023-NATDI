@@ -39,7 +39,8 @@ namespace NATDI.Tower
 
         protected virtual bool TryFireProjectile()
         {
-            if (_enemyTarget is not { IsAlive: true })
+            if (_enemyTarget == null || !_enemyTarget.IsAlive ||
+                _radius > Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position))
             {
                 _enemyTarget = _collection.GetNearestMushroomer(transform.position, _assetsCollection.Settings.FireTowerRadius);
             }

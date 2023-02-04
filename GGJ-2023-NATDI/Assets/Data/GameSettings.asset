@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16301b2b71fd44f5811aeb5e00c3cda6, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  MushroomCreatorReloadTime: 10
+  MushroomCreatorReloadTime: 15
   TowerDamage: 1
-  FireTowerRadius: 10
+  FireTowerRadius: 7
+  FireTowerCooldown: 1
+  SkunkDamage: 5
+  SkunkDamageCooldown: 1
+  SkunkDamageRadius: 7
+  ChangeAreaTargetTime: 1
+  SaveAreaTargetDistance: 7

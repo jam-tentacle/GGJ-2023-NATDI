@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MushroomerSpawner : Service, IUpdate, IStart
@@ -12,6 +13,9 @@ public class MushroomerSpawner : Service, IUpdate, IStart
     private SpawnPoint _point;
     private float _currentOverallTime;
 
+    public bool HasNextWave => _completedWavesCount != _mushroomerSpawnData.Count;
+    public int LeftWaves => _mushroomerSpawnData.Count - _completedWavesCount;
+
     public List<MushroomerSpawnData> GetSpawnData => _mushroomerSpawnData;
 
     public void GameStart()
@@ -23,7 +27,7 @@ public class MushroomerSpawner : Service, IUpdate, IStart
     {
         _currentOverallTime += Time.deltaTime;
 
-        if (_completedWavesCount == _mushroomerSpawnData.Count) return;
+        if (!HasNextWave) return;
 
         MushroomerSpawnData currentSpawnData = _mushroomerSpawnData[_completedWavesCount];
 
@@ -42,5 +46,23 @@ public class MushroomerSpawner : Service, IUpdate, IStart
         _completedWavesCount++;
         _numberOfEnemy = 0;
         _passedTimeWave = 0;
+    }
+
+    public float GetLeftNextWaveTime()
+    {
+        if (!HasNextWave)
+        {
+            return 0f;
+        }
+
+        for (int i = 0; i < _mushroomerSpawnData.Count; i++)
+        {
+            if(_currentOverallTime < _mushroomerSpawnData[i].OverallSpawnTime)
+            {
+                return _mushroomerSpawnData[i].OverallSpawnTime - _currentOverallTime;
+            }
+        }
+
+        return 0f;
     }
 }

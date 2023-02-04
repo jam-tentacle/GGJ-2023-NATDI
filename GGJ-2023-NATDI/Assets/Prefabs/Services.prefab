@@ -227,6 +227,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4f2996f21245c9850b587cab7b2e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4813897761967166352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7150345933600616420}
+  - component: {fileID: 6778650226359761381}
+  m_Layer: 0
+  m_Name: WaveViewService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7150345933600616420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813897761967166352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7203380470057029567}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6778650226359761381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813897761967166352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb41622c6d3348dca8f29aa711d691cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BusStationPrefix: 'Left '
 --- !u!1 &7203380468713970848
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +323,9 @@ MonoBehaviour:
   _yMinLimit: -45
   _yMaxLimit: 45
   _smoothTime: 2
+  _smoothFollowSpeed: 3
+  _followFovCoeff: 0.7
+  _followRotation: 33
 --- !u!1 &7203380468955606859
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 7
+  _sandAimingRange: 21
   _lineRenderer: {fileID: 7203380468955606860}
 --- !u!1 &7203380469429320523
 GameObject:
@@ -550,6 +599,7 @@ Transform:
   - {fileID: 5874099729927698738}
   - {fileID: 491869368392831252}
   - {fileID: 7606204091927262561}
+  - {fileID: 7150345933600616420}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -703,7 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81c28545f72d4f2185eb0b5a2faf6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxMushroomAreas: 50
 --- !u!1 &8317294037125633525
 GameObject:
   m_ObjectHideFlags: 0

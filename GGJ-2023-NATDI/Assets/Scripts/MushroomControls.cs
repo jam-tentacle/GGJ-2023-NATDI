@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class MushroomControls : Service, IUpdate, IStart, IInject
 {
-    [SerializeField] private int _maxMushroomAreas = 50;
     private CameraController _cameraController;
     private ShootLine _shootLine;
     private AssetsCollection _assetsCollection;
     private MyceliumVisualizer _myceliumVisualizer;
     private SpawnerService _spawnerService;
+    private TerrainService _terrainService;
     private UIService _uiService;
+    private TerrainLayerType _layerType;
 
     private float _leftReloadTime;
     private CollectionService _collection;
+    private MushroomArea _currentArea;
 
     public void Inject()
     {
@@ -21,15 +23,18 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         _spawnerService = Services.Get<SpawnerService>();
         _uiService = Services.Get<UIService>();
         _collection = Services.Get<CollectionService>();
+        _terrainService = Services.Get<TerrainService>();
     }
 
     public void GameStart()
     {
         _myceliumVisualizer = new MyceliumVisualizer(transform);
         MushroomArea area = FindObjectOfType<MushroomArea>();
+        area.CachedTerrainLayerType = _terrainService.GetTerrainLayerType(area.Position);
+        _layerType = area.CachedTerrainLayerType;
         _cameraController.SetTarget(area);
         _shootLine.SetTarget(area);
-        _myceliumVisualizer.Add(area.Position);
+        _currentArea = area;
     }
 
     public void GameUpdate(float delta)
@@ -37,9 +42,12 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         UpdateReloadTime(delta);
         UpdateMushrooms(delta);
 
-        if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
+        if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space))
+        {
+            return;
+        }
 
-        if (_leftReloadTime <= 0 && Services.Get<CollectionService>().GetAreaCount < _maxMushroomAreas)
+        if (_leftReloadTime <= 0)
         {
             Shoot();
         }
@@ -71,17 +79,25 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void Shoot()
     {
-        Vector3 targetPosition = _shootLine.GetEndPosition();
-        targetPosition.y = 0;
+        if (_layerType == TerrainLayerType.Sand)
+        {
+            Vector3 targetPosition = _shootLine.GetEndPosition();
+            SpawnMushroomArea(_terrainService.TryGetTerrainPosition(targetPosition));
+        }
+        else
+        {
+            Vector3 targetPosition = _shootLine.GetEndPosition();
+            targetPosition.y = 0;
 
-        Projectile projectile = Instantiate(_assetsCollection.SporePrefab);
-        Vector3 position = _cameraController.Target.Position;
-        position.y += 0.5f;
-        projectile.transform.position = position;
-        projectile.Hit += OnProjectileHit;
-        projectile.Launch(targetPosition);
-        _cameraController.SetFollowTarget(projectile);
-        _leftReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
+            Projectile projectile = Instantiate(_assetsCollection.SporePrefab);
+            Vector3 position = _cameraController.Target.Position;
+            position.y += 0.5f;
+            projectile.transform.position = position;
+            projectile.Hit += OnProjectileHit;
+            projectile.Launch(targetPosition);
+            _cameraController.SetFollowTarget(projectile);
+            _leftReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
+        }
     }
 
     private void OnProjectileHit(Vector3 position, Projectile projectile)
@@ -92,16 +108,36 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void SpawnMushroomArea(Vector3 position)
     {
-        var terrain = GetTerrainByPosition(position);
+        TerrainLayerType terrain = GetTerrainByPosition(position);
         if (!_spawnerService.TrySpawnMushroomArea(position, terrain, out var area))
         {
             Debug.Log($"no mushroom area spawned. terrain {terrain} is banned");
             return;
         }
 
+        if (_layerType == TerrainLayerType.Sand)
+        {
+            _layerType = TerrainLayerType.Rock;
+            _shootLine.Mode = ShootLine.AimingMode.Default;
+            _myceliumVisualizer.DrawLineWithSpikes(_currentArea.Position, area.Position, _currentArea, area);
+        }
+        else
+        {
+            _myceliumVisualizer.DrawLine(_currentArea.Position, area.Position);
+            if (terrain == TerrainLayerType.Sand)
+            {
+                _layerType = terrain;
+                _shootLine.Mode = ShootLine.AimingMode.Sand;
+            }
+            else
+            {
+                _layerType = TerrainLayerType.Rock;
+            }
+        }
+
         _cameraController.SetTarget(area);
         _shootLine.SetTarget(area);
-        _myceliumVisualizer.Add(area.Position);
+        _currentArea = area;
     }
 
     private TerrainLayerType GetTerrainByPosition(Vector3 position)

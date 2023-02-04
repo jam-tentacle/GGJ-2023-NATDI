@@ -52,7 +52,7 @@ namespace NATDI.Tower
                 return false;
             }
 
-            if (AssetsCollection.Settings.FireTowerRadius > Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position))
+            if (Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position) > AssetsCollection.Settings.FireTowerRadius)
             {
                 return false;
             }

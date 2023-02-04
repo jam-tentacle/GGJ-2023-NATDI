@@ -28,7 +28,7 @@ public class MyceliumVisualizer
         _points.Add(position);
     }
 
-    private void DrawLine(Vector3 a, Vector3 b)
+    public void DrawLine(Vector3 a, Vector3 b)
     {
         LineRenderer line = Object.Instantiate(_assetsCollection.LinePrefab, _transform);
         int points = (int)Vector3.Distance(a, b);
@@ -49,5 +49,12 @@ public class MyceliumVisualizer
 
             line.SetPosition(i, pos);
         }
+    }
+
+    public void DrawLineWithSpikes(Vector3 a, Vector3 b, MushroomArea area1, MushroomArea area2)
+    {
+        SpikeLine line = Object.Instantiate(_assetsCollection.SpikeLinePrefab);
+        line.Init(a, b);
+        line.SetAreas(area1, area2);
     }
 }

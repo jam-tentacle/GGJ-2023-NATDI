@@ -61,3 +61,5 @@ MonoBehaviour:
     Mushroom: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
   MainMushroomArea: {fileID: 0}
   SpikeLinePrefab: {fileID: 6914442265804607898, guid: b3a38fc0931c740159116603a21794ca, type: 3}
+  BloodEffect: {fileID: 19800000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  SpikeEffect: {fileID: 5880797563141009103, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}

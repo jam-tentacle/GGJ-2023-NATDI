@@ -39,9 +39,18 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
         if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
 
-        if (_leftReloadTime <= 0)
+        if (_leftReloadTime <= 0 && Services.Get<CollectionService>().GetAreaCount < _maxMushroomAreas)
         {
             Shoot();
+        }
+        else
+        {
+#if DEBUG
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                Shoot();
+            }
+#endif
         }
     }
 
@@ -62,10 +71,6 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void Shoot()
     {
-        if (Services.Get<CollectionService>().GetAreaCount >= _maxMushroomAreas)
-        {
-            return;
-        }
         Vector3 targetPosition = _shootLine.GetEndPosition();
         targetPosition.y = 0;
 

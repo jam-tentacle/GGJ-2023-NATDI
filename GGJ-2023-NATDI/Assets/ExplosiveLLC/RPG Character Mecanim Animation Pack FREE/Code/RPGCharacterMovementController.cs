@@ -3,6 +3,7 @@ using RPGCharacterAnims.Actions;
 using RPGCharacterAnims.Extensions;
 using RPGCharacterAnims.Lookups;
 using UnityEngine;
+using Move = RPGCharacterAnims.Actions.Move;
 
 namespace RPGCharacterAnims
 {

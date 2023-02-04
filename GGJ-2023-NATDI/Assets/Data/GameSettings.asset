@@ -16,7 +16,7 @@ MonoBehaviour:
   TowerDamage: 1
   FireTowerRadius: 7
   FireTowerCooldown: 1
-  SkunkDamage: 3
+  SkunkDamage: 4
   SkunkDamageCooldown: 1
   SkunkDamageRadius: 5
   ChangeAreaTargetTime: 1

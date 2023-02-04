@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2eb1659c68442b1857004dee252461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MushroomAreas: []
 --- !u!1 &725990017311123709
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +136,7 @@ MonoBehaviour:
   _chooseMushroomUIMask:
     serializedVersion: 2
     m_Bits: 1024
-  _radius: 6
+  _radius: 1
 --- !u!1 &3422582512375930649
 GameObject:
   m_ObjectHideFlags: 0

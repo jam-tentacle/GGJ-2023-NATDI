@@ -41,9 +41,11 @@ public class SpikeLine : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_area1.HasMushrooms && !_area2.HasMushrooms)
+        bool hasMushrooms = _area1.HasMushrooms && _area2.HasMushrooms;
+
+        foreach (Spike spike in _spikes)
         {
-            Destroy(gameObject);
+            spike.gameObject.SetActive(hasMushrooms);
         }
     }
 }

@@ -42,7 +42,12 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         UpdateReloadTime(delta);
         UpdateMushrooms(delta);
 
-        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && _leftReloadTime <= 0)
+        if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space))
+        {
+            return;
+        }
+
+        if (_leftReloadTime <= 0)
         {
             Shoot();
         }
@@ -90,13 +95,14 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
             projectile.transform.position = position;
             projectile.Hit += OnProjectileHit;
             projectile.Launch(targetPosition);
-
+            _cameraController.SetFollowTarget(projectile);
             _leftReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
         }
     }
 
-    private void OnProjectileHit(Vector3 position)
+    private void OnProjectileHit(Vector3 position, Projectile projectile)
     {
+        _cameraController.RemoveFollowTarget(projectile);
         SpawnMushroomArea(position);
     }
 

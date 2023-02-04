@@ -57,8 +57,8 @@ MonoBehaviour:
     MushroomArea: {fileID: 3063288276278915774, guid: a07c509f19829d245ae9b98196683892, type: 3}
     Mushroom: {fileID: 4610576889116696839, guid: 243ca73c66251da4ab6249ca408b9139, type: 3}
   - Terrain: 3
-    MushroomArea: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
-    Mushroom: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
+    MushroomArea: {fileID: 1470422099238764160, guid: e459dd08ae4ee2446adbbe5a0924756f, type: 3}
+    Mushroom: {fileID: 4968233342323116819, guid: 648500e28e95aa44ca3196ce89e5ea40, type: 3}
   MainMushroomArea: {fileID: 0}
   SpikeLinePrefab: {fileID: 6914442265804607898, guid: b3a38fc0931c740159116603a21794ca, type: 3}
   BloodEffect: {fileID: 19800000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}

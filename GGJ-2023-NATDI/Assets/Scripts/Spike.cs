@@ -1,15 +1,24 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
+    private Vector3 _startPos;
+
+    private void Start()
+    {
+        _startPos = transform.position;
+        transform.position = _startPos + Vector3.down * 5f;
+    }
+
     public void Enable()
     {
-        gameObject.SetActive(true);
+        transform.DOMove(_startPos, 0.5f);
     }
 
     public void Disable()
     {
-        gameObject.SetActive(false);
+        transform.DOMove(_startPos + Vector3.down * 5f, 0.5f);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -19,6 +19,6 @@ MonoBehaviour:
   SkunkDamage: 4
   SkunkDamageCooldown: 1
   SkunkDamageRadius: 5
-  SpikeDamage: 10
+  SpikeDamage: 7
   ChangeAreaTargetTime: 1
   SaveAreaTargetDistance: 7

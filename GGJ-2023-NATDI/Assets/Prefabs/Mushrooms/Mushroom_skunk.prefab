@@ -52,10 +52,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4610576889116696838}
     m_Modifications:
-    - target: {fileID: 2189429763845914923, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4425129568584715180, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -103,10 +99,6 @@ PrefabInstance:
     - target: {fileID: 4425129568585013132, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
       propertyPath: m_Name
       value: vfx
-      objectReference: {fileID: 0}
-    - target: {fileID: 4425129568604114668, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9049779857616056944, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
       propertyPath: clearBehavior

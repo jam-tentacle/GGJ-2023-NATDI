@@ -1912,6 +1912,18 @@ PrefabInstance:
       propertyPath: MainMushroomArea
       value: 
       objectReference: {fileID: 1481949919}
+    - target: {fileID: 4403665119054139816, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: _offset
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403665119054139816, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: _delayToEnd
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403665119054139816, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: _busArrivalSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7203380469429320524, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9783829
@@ -1986,11 +1998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8213336695800317662, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
       propertyPath: _mushroomerSpawnData.Array.data[1].OverallSpawnTime
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8213336695800317662, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
       propertyPath: _mushroomerSpawnData.Array.data[2].OverallSpawnTime
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8213336695800317662, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
       propertyPath: _mushroomerSpawnData.Array.data[0].SpawnBetweenMushroomerTime

@@ -10,6 +10,8 @@ public class CollectionService : Service, IStart
     public int GetAreaCount => MushroomAreas.Count;
 
     public List<EnemyMovementAi> Mushroomers => _mushroomers;
+    public List<Mushroom> Mushrooms => _mushrooms;
+
     public event Action<EnemyMovementAi> OnAddMushroomer;
     public event Action<EnemyMovementAi> OnRemoveMushroomer;
 
@@ -22,7 +24,7 @@ public class CollectionService : Service, IStart
 
     public void AddMushroom(Mushroom mushroom)
     {
-        _mushrooms.Add(mushroom);
+        Mushrooms.Add(mushroom);
     }
 
     public void AddMushroomArea(MushroomArea area)
@@ -32,7 +34,7 @@ public class CollectionService : Service, IStart
 
     public void RemoveMushroom(Mushroom mushroom)
     {
-        _mushrooms.Remove(mushroom);
+        Mushrooms.Remove(mushroom);
     }
 
     public void AddMushroomer(EnemyMovementAi value)
@@ -49,7 +51,7 @@ public class CollectionService : Service, IStart
 
     public Mushroom GetNearestMushroom(Vector3 position)
     {
-        return GetNearestTarget(position, _mushrooms);
+        return GetNearestTarget(position, Mushrooms);
     }
 
     public Mushroom GetNearestMushroom(Vector3 position, MushroomArea mushroomArea)

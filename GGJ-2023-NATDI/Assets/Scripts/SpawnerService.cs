@@ -3,14 +3,13 @@ using Random = UnityEngine.Random;
 
 public class SpawnerService : Service, IInject
 {
-    private const int Ground = 1 << 6;
     private CollectionService _collectionService;
-    private AssetsCollection _assetsCollection;
+    private TerrainService _terrainService;
 
     public void Inject()
     {
         _collectionService = Services.Get<CollectionService>();
-        _assetsCollection = Services.Get<AssetsCollection>();
+        _terrainService = Services.Get<TerrainService>();
     }
 
     public Mushroom SpawnMushroom(Transform t, float radius, TerrainLayerType terrain)
@@ -18,7 +17,7 @@ public class SpawnerService : Service, IInject
         Vector2 randomPos = Random.insideUnitCircle * radius;
         Vector3 localPos = new(randomPos.x, 0, randomPos.y);
         Mushroom mushroom = Instantiate(Services.Get<AssetsCollection>().GetMushroomByTerrain(terrain), t);
-        if (RayCastOnTerrain(t.position + localPos, out RaycastHit hit))
+        if (_terrainService.RayCastOnTerrain(t.position + localPos, out RaycastHit hit))
         {
             mushroom.transform.position = hit.point;
         }
@@ -33,6 +32,11 @@ public class SpawnerService : Service, IInject
 
     public void DespawnMushroom(Mushroom mushroom)
     {
+        if (!mushroom.IsAlive)
+        {
+           Debug.LogError("mushroom already destroyed");
+           return;
+        }
         _collectionService.RemoveMushroom(mushroom);
         Destroy(mushroom.gameObject);
     }
@@ -57,10 +61,4 @@ public class SpawnerService : Service, IInject
         area.transform.position = position;
         return true;
     }
-
-    private bool RayCastOnTerrain(Vector3 position, out RaycastHit hit) => Physics.Raycast(position + Vector3.up * 1000,
-        Vector3.down,
-        out hit,
-        Mathf.Infinity,
-        Ground);
 }

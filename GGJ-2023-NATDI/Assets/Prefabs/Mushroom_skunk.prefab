@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4425129568584715180, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.205
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4425129568584715180, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
       propertyPath: m_LocalPosition.z
@@ -103,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 4425129568585013132, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
       propertyPath: m_Name
       value: vfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425129568604114668, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9049779857616056944, guid: bc40642812eb2c249bfa46c545590a34, type: 3}
       propertyPath: clearBehavior
@@ -164,6 +168,10 @@ PrefabInstance:
     - target: {fileID: 4968233342323116820, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
       propertyPath: m_Name
       value: Mushroom_skunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156236060552108529, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6324617091972031134, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
       propertyPath: m_Materials.Array.data[0]

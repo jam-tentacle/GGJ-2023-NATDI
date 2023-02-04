@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MushroomArea : MonoBehaviour, ITarget
@@ -25,7 +26,7 @@ public class MushroomArea : MonoBehaviour, ITarget
     private LinkedList<Mushroom> _mushrooms = new();
     public LinkedList<Mushroom> Mushrooms => _mushrooms;
 
-    public bool HasMushrooms => _mushrooms.Count > 0;
+    public bool HasMushrooms => _mushrooms.Count > 0 && _mushrooms.Any(mushroom => mushroom != null);
 
     public bool IsUnderAim { get; set; }
 

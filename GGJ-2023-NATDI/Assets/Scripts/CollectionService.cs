@@ -60,6 +60,11 @@ public class CollectionService : Service, IStart
         T nearest = default;
         foreach (T candidate in collection)
         {
+            if (!candidate.IsAlive)
+            {
+                continue;
+            }
+
             float distance = Vector3.Distance(position, candidate.Position);
 
             if (distance >= minDistance) continue;

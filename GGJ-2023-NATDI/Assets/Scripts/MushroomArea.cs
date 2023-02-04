@@ -18,6 +18,7 @@ public class MushroomArea : MonoBehaviour, ITarget
     public Vector3 ShootTargetPosition => transform.position;
     public Vector3 Velocity => Vector3.zero;
     public bool IsAlive => this != null;
+    public TerrainLayerType CachedTerrainLayerType { get; set; }
 
     private float _currentRespawnTime;
 
@@ -40,7 +41,7 @@ public class MushroomArea : MonoBehaviour, ITarget
 
     private void SpawnMushroom()
     {
-        Mushroom mushroom = _spawnerService.SpawnMushroom(transform, _radius);
+        Mushroom mushroom = _spawnerService.SpawnMushroom(transform, _radius, CachedTerrainLayerType);
         _mushrooms.AddLast(mushroom);
     }
 

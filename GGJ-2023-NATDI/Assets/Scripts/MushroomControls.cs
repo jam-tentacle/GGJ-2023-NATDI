@@ -76,10 +76,16 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void SpawnMushroomArea(Vector3 position)
     {
-        MushroomArea area = _spawnerService.SpawnMushroomArea(position);
+        var terrain = GetTerrainByPosition(position);
+        MushroomArea area = _spawnerService.SpawnMushroomArea(position, terrain);
 
         _cameraController.SetTarget(area);
         _shootLine.SetTarget(area);
         _myceliumVisualizer.Add(area.Position);
+    }
+
+    private TerrainLayerType GetTerrainByPosition(Vector3 position)
+    {
+        return Services.Get<TerrainService>().GetTerrainLayerType(position);
     }
 }

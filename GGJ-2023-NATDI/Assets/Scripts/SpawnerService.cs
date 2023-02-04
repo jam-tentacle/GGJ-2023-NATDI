@@ -13,11 +13,11 @@ public class SpawnerService : Service, IInject
         _assetsCollection = Services.Get<AssetsCollection>();
     }
 
-    public Mushroom SpawnMushroom(Transform t, float radius)
+    public Mushroom SpawnMushroom(Transform t, float radius, TerrainLayerType terrain)
     {
         Vector2 randomPos = Random.insideUnitCircle * radius;
         Vector3 localPos = new(randomPos.x, 0, randomPos.y);
-        Mushroom mushroom = Instantiate(_assetsCollection.MushroomPrefab, t);
+        Mushroom mushroom = Instantiate(Services.Get<AssetsCollection>().GetMushroomByTerrain(terrain), t);
         if (RayCastOnTerrain(t.position + localPos, out RaycastHit hit))
         {
             mushroom.transform.position = hit.point;
@@ -25,7 +25,6 @@ public class SpawnerService : Service, IInject
         else
         {
             mushroom.transform.localPosition = localPos;
-
         }
 
         _collectionService.AddMushroom(mushroom);
@@ -44,9 +43,11 @@ public class SpawnerService : Service, IInject
         Destroy(value.gameObject);
     }
 
-    public MushroomArea SpawnMushroomArea(Vector3 position)
+    public MushroomArea SpawnMushroomArea(Vector3 position, TerrainLayerType terrain)
     {
-        MushroomArea area = Instantiate(_assetsCollection.MushroomAreaPrefab);
+        var areaPrefab = Services.Get<AssetsCollection>().GetMushroomAreaByTerrain(terrain);
+        MushroomArea area = Instantiate(areaPrefab);
+        area.CachedTerrainLayerType = terrain;
         Services.Get<CollectionService>().MushroomAreas.Add(area);
         area.transform.position = position;
 

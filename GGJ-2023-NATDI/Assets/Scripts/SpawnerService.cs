@@ -32,6 +32,11 @@ public class SpawnerService : Service, IInject
 
     public void DespawnMushroom(Mushroom mushroom)
     {
+        if (mushroom == null)
+        {
+           Debug.LogError("mushroom already destroyed");
+           return;
+        }
         _collectionService.RemoveMushroom(mushroom);
         Destroy(mushroom.gameObject);
     }

@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _busArrivalSpeed: 4
+  _offset: 4
+  _delayToEnd: 2
 --- !u!1 &1161961971292542122
 GameObject:
   m_ObjectHideFlags: 0

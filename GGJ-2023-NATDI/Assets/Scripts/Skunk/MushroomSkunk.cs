@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace NATDI.Skunk
 {
-    public class MushroomSkunk : MonoBehaviour
+    public class MushroomSkunk : MonoBehaviour, IUpdate
     {
         private GameSettings _settings;
         private LinkedList<MushroomerDamageData> _mushroomersData = new LinkedList<MushroomerDamageData>();
+        private bool _initialized;
 
         void Start()
         {
@@ -19,6 +20,7 @@ namespace NATDI.Skunk
 
             collection.OnAddMushroomer += SaveMushroomer;
             collection.OnRemoveMushroomer += RemoveMushroomer;
+            _initialized = true;
         }
 
         private void RemoveMushroomer(EnemyMovementAi mushroomer)
@@ -66,8 +68,15 @@ namespace NATDI.Skunk
             public Damageable Damagable;
         }
 
-        void GameUpdate()
+        private bool IsInRange(EnemyMovementAi mushroomer) =>
+            Vector3.Distance(mushroomer.Position, transform.position) < _settings.SkunkDamageRadius;
+
+        public void GameUpdate(float delta)
         {
+            if (!_initialized)
+            {
+                return;
+            }
             var node = _mushroomersData.First;
 
             while (node != null)
@@ -77,6 +86,7 @@ namespace NATDI.Skunk
 
                 if (!IsInRange(data.Mushroomer))
                 {
+                    node = next;
                     continue;
                 }
 
@@ -85,8 +95,5 @@ namespace NATDI.Skunk
                 node = next;
             }
         }
-
-        private bool IsInRange(EnemyMovementAi mushroomer) =>
-            Vector3.Distance(mushroomer.Position, transform.position) < _settings.SkunkDamageRadius;
     }
 }

@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59408bb9c5e241ed834cac176344dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMax: 20
+  _healthMax: 50
 --- !u!195 &2151019122430239322
 NavMeshAgent:
   m_ObjectHideFlags: 0

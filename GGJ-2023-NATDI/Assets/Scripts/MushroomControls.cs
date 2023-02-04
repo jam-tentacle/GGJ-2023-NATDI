@@ -12,6 +12,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     private TerrainLayerType _layerType;
 
     private float _leftReloadTime;
+    private CollectionService _collection;
     private MushroomArea _currentArea;
 
     public void Inject()
@@ -21,6 +22,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         _assetsCollection = Services.Get<AssetsCollection>();
         _spawnerService = Services.Get<SpawnerService>();
         _uiService = Services.Get<UIService>();
+        _collection = Services.Get<CollectionService>();
         _terrainService = Services.Get<TerrainService>();
     }
 
@@ -38,10 +40,28 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     public void GameUpdate(float delta)
     {
         UpdateReloadTime(delta);
+        UpdateMushrooms(delta);
 
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && _leftReloadTime <= 0)
         {
             Shoot();
+        }
+        else
+        {
+#if DEBUG
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                Shoot();
+            }
+#endif
+        }
+    }
+
+    private void UpdateMushrooms(float delta)
+    {
+        foreach (var mushroom in _collection.Mushrooms)
+        {
+            mushroom.GameUpdate(delta);
         }
     }
 

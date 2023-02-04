@@ -7,6 +7,8 @@ public class GameSettings : ScriptableObject
     [Header("Tower")]
     public float TowerDamage = 1f;
     public float FireTowerRadius = 10f;
+    public float FireTowerCooldown = 1f;
+
     [Header("Skunk")]
     public float SkunkDamage = 1f;
     public float SkunkDamageCooldown = 2f;

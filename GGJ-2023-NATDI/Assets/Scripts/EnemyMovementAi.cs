@@ -12,7 +12,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     private bool _walkPointSet;
     private bool _isGathering;
 
-    private MushroomTargeter _targeter = new MushroomTargeter();
+    private MushroomTargeter _targeter = new();
 
     public Vector3 Position => transform.position;
     public Vector3 ShootTargetPosition => _shootPoint.position;
@@ -129,8 +129,6 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
 
     private void OnTargetUpdated()
     {
-        // transform.LookAt(_targeter.CurrentMushroom.transform);
-        // transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         _agent.SetDestination(_targeter.CurrentMushroom.Position);
     }
 

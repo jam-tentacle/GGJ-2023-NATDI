@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class AssetsCollection : Service
 {
@@ -13,6 +14,7 @@ public class AssetsCollection : Service
     public List<MushroomAreaByTerrain> MushroomAreasByTerrains;
 
     public MushroomArea MainMushroomArea;
+    public SpikeLine SpikeLinePrefab;
 
     [Serializable]
     public class MushroomAreaByTerrain
@@ -29,6 +31,7 @@ public class AssetsCollection : Service
         {
             return null;
         }
+
         return areaSettings.MushroomArea ?? DefaultMushroomArea;
     }
 

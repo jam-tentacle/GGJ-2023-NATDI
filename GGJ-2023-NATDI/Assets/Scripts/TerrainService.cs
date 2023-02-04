@@ -22,4 +22,7 @@ public class TerrainService : Service, IInject
         out hit,
         Mathf.Infinity,
         Ground);
+
+    public Vector3 TryGetTerrainPosition(Vector3 position) =>
+        RayCastOnTerrain(position, out RaycastHit hit) ? hit.point : position;
 }

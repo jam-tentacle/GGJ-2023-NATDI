@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 public class MushroomerSpawner : Service, IUpdate, IStart
 {
-    [SerializeField] private List<MushroomerSpawnData> _mushroomerSpawnData = new List<MushroomerSpawnData>();
+    [SerializeField] private List<MushroomerSpawnData> _mushroomerSpawnData = new();
     [SerializeField] private GameObject _gameObject;
     private float _passedTimeBetweenSpawn;
     private float _passedTimeWave;

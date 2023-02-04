@@ -11,6 +11,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     private UIService _uiService;
 
     private float _leftReloadTime;
+    private CollectionService _collection;
 
     public void Inject()
     {
@@ -19,6 +20,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         _assetsCollection = Services.Get<AssetsCollection>();
         _spawnerService = Services.Get<SpawnerService>();
         _uiService = Services.Get<UIService>();
+        _collection = Services.Get<CollectionService>();
     }
 
     public void GameStart()
@@ -33,12 +35,21 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     public void GameUpdate(float delta)
     {
         UpdateReloadTime(delta);
+        UpdateMushrooms(delta);
 
         if (!Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space)) return;
 
         if (_leftReloadTime <= 0)
         {
             Shoot();
+        }
+    }
+
+    private void UpdateMushrooms(float delta)
+    {
+        foreach (var mushroom in _collection.Mushrooms)
+        {
+            mushroom.GameUpdate(delta);
         }
     }
 
@@ -76,7 +87,11 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     private void SpawnMushroomArea(Vector3 position)
     {
         var terrain = GetTerrainByPosition(position);
-        MushroomArea area = _spawnerService.SpawnMushroomArea(position, terrain);
+        if (!_spawnerService.TrySpawnMushroomArea(position, terrain, out var area))
+        {
+            Debug.Log($"no mushroom area spawned. terrain {terrain} is banned");
+            return;
+        }
 
         _cameraController.SetTarget(area);
         _shootLine.SetTarget(area);

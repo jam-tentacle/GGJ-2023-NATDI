@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NATDI.Tower
 {
-    public class MushroomTower : MonoBehaviour
+    public class MushroomTower : MonoBehaviour, IUpdate
     {
 
         [Header("Settings")]
@@ -25,7 +25,7 @@ namespace NATDI.Tower
             _assetsCollection = Services.Get<AssetsCollection>();
         }
 
-        void Update()
+        public void GameUpdate(float delta)
         {
             _timeSinceLastFire += Time.deltaTime;
             if (_timeSinceLastFire >= _fireCooldown)

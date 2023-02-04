@@ -24,7 +24,12 @@ public class AssetsCollection : Service
 
     public MushroomArea GetMushroomAreaByTerrain(TerrainLayerType terrain)
     {
-        return MushroomAreasByTerrains.FirstOrDefault(m => m.Terrain == terrain)?.MushroomArea ?? DefaultMushroomArea;
+        var areaSettings = MushroomAreasByTerrains.FirstOrDefault(m => m.Terrain == terrain);
+        if (areaSettings is null)
+        {
+            return null;
+        }
+        return areaSettings.MushroomArea ?? DefaultMushroomArea;
     }
 
     public Mushroom GetMushroomByTerrain(TerrainLayerType terrain)

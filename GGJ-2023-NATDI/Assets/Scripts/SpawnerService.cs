@@ -3,14 +3,13 @@ using Random = UnityEngine.Random;
 
 public class SpawnerService : Service, IInject
 {
-    private const int Ground = 1 << 6;
     private CollectionService _collectionService;
-    private AssetsCollection _assetsCollection;
+    private TerrainService _terrainService;
 
     public void Inject()
     {
         _collectionService = Services.Get<CollectionService>();
-        _assetsCollection = Services.Get<AssetsCollection>();
+        _terrainService = Services.Get<TerrainService>();
     }
 
     public Mushroom SpawnMushroom(Transform t, float radius, TerrainLayerType terrain)
@@ -18,7 +17,7 @@ public class SpawnerService : Service, IInject
         Vector2 randomPos = Random.insideUnitCircle * radius;
         Vector3 localPos = new(randomPos.x, 0, randomPos.y);
         Mushroom mushroom = Instantiate(Services.Get<AssetsCollection>().GetMushroomByTerrain(terrain), t);
-        if (RayCastOnTerrain(t.position + localPos, out RaycastHit hit))
+        if (_terrainService.RayCastOnTerrain(t.position + localPos, out RaycastHit hit))
         {
             mushroom.transform.position = hit.point;
         }
@@ -33,6 +32,11 @@ public class SpawnerService : Service, IInject
 
     public void DespawnMushroom(Mushroom mushroom)
     {
+        if (!mushroom.IsAlive)
+        {
+           Debug.LogError("mushroom already destroyed");
+           return;
+        }
         _collectionService.RemoveMushroom(mushroom);
         Destroy(mushroom.gameObject);
     }
@@ -43,20 +47,18 @@ public class SpawnerService : Service, IInject
         Destroy(value.gameObject);
     }
 
-    public MushroomArea SpawnMushroomArea(Vector3 position, TerrainLayerType terrain)
+    public bool TrySpawnMushroomArea(Vector3 position, TerrainLayerType terrain, out MushroomArea area)
     {
         var areaPrefab = Services.Get<AssetsCollection>().GetMushroomAreaByTerrain(terrain);
-        MushroomArea area = Instantiate(areaPrefab);
+        if (areaPrefab is null)
+        {
+            area = null;
+            return false;
+        }
+        area = Instantiate(areaPrefab);
         area.CachedTerrainLayerType = terrain;
         Services.Get<CollectionService>().AddMushroomArea(area);
         area.transform.position = position;
-
-        return area;
+        return true;
     }
-
-    private bool RayCastOnTerrain(Vector3 position, out RaycastHit hit) => Physics.Raycast(position + Vector3.up * 1000,
-        Vector3.down,
-        out hit,
-        Mathf.Infinity,
-        Ground);
 }

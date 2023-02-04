@@ -29,8 +29,6 @@ public class BusService : Service, IStart, IUpdate
 
     public void GameUpdate(float delta)
     {
-        return;
-
         _currentTimeData += Time.deltaTime;
 
         if (_currentBusArrives >= _mushroomerSpawnData.Count) return;

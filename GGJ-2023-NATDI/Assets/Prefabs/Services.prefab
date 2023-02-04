@@ -859,6 +859,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3925372055017317944, guid: 1c9c80be22e1449c8888b30cadebc709, type: 3}
+      propertyPath: DefaultMushroomArea
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4301247333930819036, guid: 1c9c80be22e1449c8888b30cadebc709, type: 3}
       propertyPath: m_Name
       value: AssetsCollection

@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _busArrivalSpeed: 4
+  _offset: 4
+  _delayToEnd: 2
 --- !u!1 &1161961971292542122
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +926,14 @@ PrefabInstance:
     - target: {fileID: 81643529933590936, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404169018164620916, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
+      propertyPath: _mushroomerSpawnData.Array.data[1].OverallSpawnTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404169018164620916, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
+      propertyPath: _mushroomerSpawnData.Array.data[2].OverallSpawnTime
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8015297073040992763, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
       propertyPath: m_Name

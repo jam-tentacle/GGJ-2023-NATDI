@@ -2,17 +2,15 @@
 
 public class ChooseMushroomAreaService : Service, IUpdate
 {
+    private const float RayLength = 500f;
+
     [SerializeField] private LayerMask _chooseMushroomUIMask;
     [SerializeField] private float _radius;
 
     private RaycastHit[] _hits = new RaycastHit[2];
-
     private CameraController _cameraController;
-
     private Camera _camera;
-    private static Vector3 ScreenCenter = new Vector3(0.5f, 0.5f, 0f);
-
-    float _rayLength = 500f;
+    private static Vector3 ScreenCenter = new(0.5f, 0.5f, 0f);
 
     private ChooseMushroomAreaTarget _target;
     private ShootLine _shootLine;
@@ -26,6 +24,11 @@ public class ChooseMushroomAreaService : Service, IUpdate
 
     public void GameUpdate(float delta)
     {
+        if (_shootLine.Mode is ShootLine.AimingMode.Sand)
+        {
+            return;
+        }
+
         UpdateChooseMushroomAreaTarget();
 
         TryChangeTargetForCamera();
@@ -44,7 +47,7 @@ public class ChooseMushroomAreaService : Service, IUpdate
 
         var newRay = new Ray(cameraTarget.ChooseMushroomAreaTarget.StartRayPoint.position, direction);
 
-        var count = Physics.SphereCastNonAlloc(newRay, _radius, _hits, _rayLength, _chooseMushroomUIMask);
+        var count = Physics.SphereCastNonAlloc(newRay, _radius, _hits, RayLength, _chooseMushroomUIMask);
 
         if (count <= 0)
         {

@@ -1,12 +1,12 @@
 using DG.Tweening;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BusService : Service, IStart, IUpdate
 {
     [SerializeField] public float _busArrivalSpeed;
+    [SerializeField] public float _offset;
+    [SerializeField] private float _delayToEnd;
     private List<MushroomerSpawnData> _mushroomerSpawnData = new();
     private BusEndPoint _busEndPoint;
     private BusStartPoint _busStartPoint;
@@ -16,6 +16,7 @@ public class BusService : Service, IStart, IUpdate
     private int _currentBusArrives;
     private MushroomerSpawner _spawnService;
     private MushroomerSpawnData _spawnData;
+    private bool _firstTime;
 
     public void GameStart()
     {
@@ -25,6 +26,9 @@ public class BusService : Service, IStart, IUpdate
         _bus = FindObjectOfType<Bus>();
         _spawnService = Services.Get<MushroomerSpawner>();
         _mushroomerSpawnData = _spawnService.GetSpawnData;
+        DOTween.Sequence()
+            .Append(_bus.transform.DOMove(_busEndPoint.transform.position, _busArrivalSpeed).SetEase(Ease.InCubic))
+            .Append(_bus.transform.DOMove(_busStartPoint.transform.position, 0f));
     }
 
     public void GameUpdate(float delta)
@@ -35,26 +39,16 @@ public class BusService : Service, IStart, IUpdate
 
         _spawnData = _mushroomerSpawnData[_currentBusArrives];
 
-        if (_currentTimeData <= _spawnData.OverallSpawnTime) return;
-
-        DOTween.Sequence()
-            .AppendInterval(1f + _spawnData.OverallSpawnTime * _spawnData.MushroomerCount)
-            .Append(_bus.transform.DOMove(_busEndPoint.transform.position, _busArrivalSpeed).SetEase(Ease.InCubic))
-            .Append(_bus.transform.DOMove(_busStartPoint.transform.position, 0f))
-            .AppendInterval(1f + _spawnData.OverallSpawnTime * _spawnData.MushroomerCount)
-            .Append(_bus.transform.DOMove(_busStationPoint.transform.position, _busArrivalSpeed)
-                .SetEase(Ease.OutCubic));
+        if (_currentTimeData <= _spawnData.OverallSpawnTime - _offset) return;
 
         _currentBusArrives++;
-    }
 
-    // public void RunBus(Action callback)
-    // {
-    //     DOTween.Sequence()
-    //         .Append(_bus.transform.DOMove(_busEndPoint.transform.position, 4f).SetEase(Ease.OutQuint))
-    //         .AppendCallback(callback.Invoke)
-    //         .AppendInterval(5f)
-    //         .Append(_bus.transform.DOMove(_busEndPoint.transform.position + Vector3.forward * 10f, 4f)
-    //             .SetEase(Ease.OutQuint));
-    // }
+        if (_spawnData.OverallSpawnTime == 0) return;
+
+        DOTween.Sequence()
+            .Append(_bus.transform.DOMove(_busStationPoint.transform.position, _busArrivalSpeed).SetEase(Ease.OutCubic))
+            .AppendInterval(_delayToEnd)
+            .Append(_bus.transform.DOMove(_busEndPoint.transform.position, _busArrivalSpeed).SetEase(Ease.InCubic))
+            .Append(_bus.transform.DOMove(_busStartPoint.transform.position, 0f));
+    }
 }

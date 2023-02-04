@@ -89,10 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bc2283a5eb41a45872060537de35c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _busScheduleData:
-  - BusArriveSchedule: 5
-  - BusArriveSchedule: 10
-  - BusArriveSchedule: 15
+  _busArrivalSpeed: 4
 --- !u!1 &1161961971292542122
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,13 @@ public class MushroomerSpawner : Service, IUpdate, IStart
     private SpawnPoint _point;
     private float _currentOverallTime;
 
+    public List<MushroomerSpawnData> GetSpawnData => _mushroomerSpawnData;
+
+    public void GameStart()
+    {
+        _point = FindObjectOfType<SpawnPoint>();
+    }
+
     public void GameUpdate(float delta)
     {
         _currentOverallTime += Time.deltaTime;
@@ -35,10 +42,5 @@ public class MushroomerSpawner : Service, IUpdate, IStart
         _completedWavesCount++;
         _numberOfEnemy = 0;
         _passedTimeWave = 0;
-    }
-
-    public void GameStart()
-    {
-        _point = FindObjectOfType<SpawnPoint>();
     }
 }

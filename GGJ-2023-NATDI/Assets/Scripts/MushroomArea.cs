@@ -11,8 +11,8 @@ public class MushroomArea : MonoBehaviour, ITarget
     [SerializeField] private ChooseMushroomAreaTarget _chooseMushroomAreaTarget;
     public ChooseMushroomAreaTarget ChooseMushroomAreaTarget => _chooseMushroomAreaTarget;
 
-    private MyceliumVisualizer _myceliumVisualizer;
     private SpawnerService _spawnerService;
+    private TerrainService _terrainService;
 
     public Vector3 Position => transform.position;
     public Vector3 ShootTargetPosition => transform.position;
@@ -26,7 +26,8 @@ public class MushroomArea : MonoBehaviour, ITarget
     private void Start()
     {
         _spawnerService = Services.Get<SpawnerService>();
-        _myceliumVisualizer = new MyceliumVisualizer(transform);
+        _terrainService = Services.Get<TerrainService>();
+
         UpdateCylinderScale();
 
         for (int i = 0; i < _count.x; i++)
@@ -34,8 +35,7 @@ public class MushroomArea : MonoBehaviour, ITarget
             SpawnMushroom();
         }
 
-        Painter painter = FindObjectOfType<Painter>();
-        painter.Modify(transform.position);
+        _terrainService.Modify(transform.position);
     }
 
     private void SpawnMushroom()

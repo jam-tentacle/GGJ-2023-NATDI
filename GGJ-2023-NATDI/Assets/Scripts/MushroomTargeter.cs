@@ -17,6 +17,8 @@ public class MushroomTargeter
 
     private Action _onTargetUpdated;
 
+    private bool _isStopped;
+
     public void Init(Transform holder, Action onTargetUpdated)
     {
         _assetsCollection = Services.Get<AssetsCollection>();
@@ -45,6 +47,11 @@ public class MushroomTargeter
 
     public void TryChangeTarget()
     {
+        if (_isStopped)
+        {
+            return;
+        }
+
         TryChangeAreaTarget();
 
         TryChangeMushroomTarget();
@@ -82,5 +89,15 @@ public class MushroomTargeter
         }
 
         _onTargetUpdated?.Invoke();
+    }
+
+    public void Stop()
+    {
+        if (_currentArea != null)
+        {
+            _currentArea.IsUnderAim = false;
+        }
+
+        _isStopped = true;
     }
 }

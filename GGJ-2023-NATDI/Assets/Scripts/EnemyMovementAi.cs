@@ -37,6 +37,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     private void OnDied()
     {
         Debug.Log("Died");
+        _targeter.Stop();
         _characterAnimator.SetDying();
     }
 

@@ -6,9 +6,6 @@ namespace NATDI.Tower
     public class MushroomTower : MonoBehaviour, IUpdate
     {
 
-        [Header("Settings")]
-        [SerializeField] private float _fireCooldown = 5;
-        [SerializeField] private float _radius = 10f;
         [Header("Links")]
         [SerializeField] private RandomAudioSource _randomAudioSource;
         [SerializeField] private Transform _projectilePoint;
@@ -28,7 +25,7 @@ namespace NATDI.Tower
         public void GameUpdate(float delta)
         {
             _timeSinceLastFire += Time.deltaTime;
-            if (_timeSinceLastFire >= _fireCooldown)
+            if (_timeSinceLastFire >= _assetsCollection.Settings.FireTowerCooldown)
             {
                 if (TryFireProjectile())
                 {
@@ -40,7 +37,7 @@ namespace NATDI.Tower
         protected virtual bool TryFireProjectile()
         {
             if (_enemyTarget == null || !_enemyTarget.IsAlive ||
-                Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position) > _radius)
+                Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position) > _assetsCollection.Settings.FireTowerRadius)
             {
                 _enemyTarget = _collection.GetNearestMushroomer(transform.position, _assetsCollection.Settings.FireTowerRadius);
             }
@@ -55,7 +52,7 @@ namespace NATDI.Tower
                 return false;
             }
 
-            if (_radius > Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position))
+            if (_assetsCollection.Settings.FireTowerRadius > Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position))
             {
                 return false;
             }

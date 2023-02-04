@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a9393fceeab7e43b7644684c7efc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireCooldown: 2
-  _radius: 10
+  _fireCooldown: 1
+  _radius: 7
   _randomAudioSource: {fileID: 8660499106079011789}
   _projectilePoint: {fileID: 2153971276738926717}
   _damagerProjectile: {fileID: 5204575207941219009}

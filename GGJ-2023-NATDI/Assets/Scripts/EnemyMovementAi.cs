@@ -7,12 +7,12 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private Damageable _damageable;
     [SerializeField] private Transform _shootPoint;
-    private Mushroom _mushroom;
     private Vector3 _walkPoint;
     private bool _alreadyAttacked;
     private bool _walkPointSet;
     private bool _isGathering;
-    private CollectionService _collectionService;
+
+    private MushroomTargeter _targeter = new MushroomTargeter();
 
     public Vector3 Position => transform.position;
     public Vector3 ShootTargetPosition => _shootPoint.position;
@@ -21,7 +21,6 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
 
     private void Start()
     {
-        _collectionService = Services.Get<CollectionService>();
         _agent = GetComponent<NavMeshAgent>();
         _agent.updatePosition = false;
         _agent.updateRotation = true;
@@ -31,6 +30,8 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         Services.Get<CollectionService>().AddMushroomer(this);
         _damageable.HealthChanged += OnHealthChanged;
         _damageable.Died += OnDied;
+
+        _targeter.Init(transform, OnTargetUpdated);
     }
 
     private void OnDied()
@@ -50,8 +51,8 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     {
         _isGathering = false;
 
-        Services.Get<SpawnerService>().DespawnMushroom(_mushroom);
-        SetTarget();
+        Services.Get<SpawnerService>().DespawnMushroom(_targeter.CurrentMushroom);
+        _targeter.TryChangeTarget();
     }
 
     private void OnCharacterMove(Vector3 delta, Quaternion rotation)
@@ -73,6 +74,8 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
 
     private void FixedUpdate()
     {
+        _targeter.FixedUpdate(Time.fixedDeltaTime);
+
         if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("HitReceived");
@@ -84,18 +87,13 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
             return;
         }
 
-        if (_mushroom == null)
-        {
-            SetTarget();
-        }
-
-        if (_mushroom == null)
+        if (_targeter.CurrentMushroom == null)
         {
             return;
         }
 
         bool moving = true;
-        float distance = Vector3.Distance(transform.position, _mushroom.Position);
+        float distance = Vector3.Distance(transform.position, _targeter.CurrentMushroom.Position);
         if (distance < 1f)
         {
             _isGathering = true;
@@ -108,28 +106,21 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         _agent.nextPosition = transform.position;
     }
 
-    private void SetTarget()
+    private void OnTargetUpdated()
     {
-        _mushroom = _collectionService.GetNearestMushroom(transform.position);
-
-        if (_mushroom == null)
-        {
-            return;
-        }
-
-        transform.LookAt(_mushroom.transform);
+        transform.LookAt(_targeter.CurrentMushroom.transform);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        _agent.SetDestination(_mushroom.Position);
+        _agent.SetDestination(_targeter.CurrentMushroom.Position);
     }
 
     private void OnDrawGizmos()
     {
-        if (_mushroom == null)
+        if (_targeter.CurrentMushroom == null)
         {
             return;
         }
 
         UnityEditor.Handles.color = Color.red;
-        UnityEditor.Handles.DrawWireDisc(_mushroom.transform.position, Vector3.up, 1);
+        UnityEditor.Handles.DrawWireDisc(_targeter.CurrentMushroom.transform.position, Vector3.up, 1);
     }
 }

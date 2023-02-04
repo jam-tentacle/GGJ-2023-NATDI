@@ -23,6 +23,11 @@ public class MushroomArea : MonoBehaviour, ITarget
     private float _currentRespawnTime;
 
     private LinkedList<Mushroom> _mushrooms = new();
+    public LinkedList<Mushroom> Mushrooms => _mushrooms;
+
+    public bool HasMushrooms => _mushrooms.Count > 0;
+
+    public bool IsUnderAim { get; set; }
 
     private void Start()
     {

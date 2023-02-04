@@ -48,7 +48,7 @@ public class SpawnerService : Service, IInject
         var areaPrefab = Services.Get<AssetsCollection>().GetMushroomAreaByTerrain(terrain);
         MushroomArea area = Instantiate(areaPrefab);
         area.CachedTerrainLayerType = terrain;
-        Services.Get<CollectionService>().MushroomAreas.Add(area);
+        Services.Get<CollectionService>().AddMushroomArea(area);
         area.transform.position = position;
 
         return area;

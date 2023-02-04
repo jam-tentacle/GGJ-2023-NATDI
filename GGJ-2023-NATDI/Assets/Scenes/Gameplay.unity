@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 349815073}
-  m_IndirectSpecularColor: {r: 0.15700938, g: 0.4551212, b: 0.6094171, a: 1}
+  m_IndirectSpecularColor: {r: 0.1570094, g: 0.4551212, b: 0.6094171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1782,6 +1782,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1171964733941802273, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: MainMushroomArea
+      value: 
+      objectReference: {fileID: 1481949919}
     - target: {fileID: 7203380469429320524, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9783829
@@ -3315,7 +3319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1402067680349237112, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
       propertyPath: m_Name
-      value: MushroomArea
+      value: MainMushroomArea
       objectReference: {fileID: 0}
     - target: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
       propertyPath: _radius
@@ -3331,6 +3335,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
+--- !u!114 &1481949919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
+  m_PrefabInstance: {fileID: 1481949918}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933f343583f4045208b8dec6931b07a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1485672023
 PrefabInstance:
   m_ObjectHideFlags: 0

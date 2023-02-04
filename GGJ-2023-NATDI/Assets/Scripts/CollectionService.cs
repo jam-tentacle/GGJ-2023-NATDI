@@ -1,15 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectionService : Service
+public class CollectionService : Service, IStart
 {
     private List<Mushroom> _mushrooms = new();
     private List<EnemyMovementAi> _mushroomers = new();
-    public List<MushroomArea> MushroomAreas = new();
+    private List<MushroomArea> MushroomAreas = new();
+    public int GetAreaCount => MushroomAreas.Count;
+
+    private AssetsCollection _assetsCollection;
+
+    public void GameStart()
+    {
+        _assetsCollection = Services.Get<AssetsCollection>();
+    }
 
     public void AddMushroom(Mushroom mushroom)
     {
         _mushrooms.Add(mushroom);
+    }
+
+    public void AddMushroomArea(MushroomArea area)
+    {
+        MushroomAreas.Add(area);
     }
 
     public void RemoveMushroom(Mushroom mushroom)
@@ -32,6 +45,11 @@ public class CollectionService : Service
         return GetNearestTarget(position, _mushrooms);
     }
 
+    public Mushroom GetNearestMushroom(Vector3 position, MushroomArea mushroomArea)
+    {
+        return GetNearestTarget(position, mushroomArea.Mushrooms);
+    }
+
     public EnemyMovementAi GetNearestMushroomer(Vector3 position, float minDistance)
     {
         return GetNearestTarget(position, _mushroomers, minDistance);
@@ -51,5 +69,53 @@ public class CollectionService : Service
         }
 
         return nearest;
+    }
+
+    public MushroomArea GetNearestMushroomArea(Vector3 position)
+    {
+        var directionToMain = (position - _assetsCollection.MainMushroomArea.Position).normalized;
+
+        float maxAngle = 180;
+        MushroomArea currentArea = null;
+
+        foreach (var mushroomArea in MushroomAreas)
+        {
+            if (mushroomArea == _assetsCollection.MainMushroomArea)
+            {
+                continue;
+            }
+
+            if (!mushroomArea.HasMushrooms)
+            {
+                continue;
+            }
+
+            if (mushroomArea.IsUnderAim)
+            {
+                continue;
+            }
+
+            var directionToArea = (position - mushroomArea.Position).normalized;
+
+            var angle = Vector3.Angle(directionToMain, directionToArea);
+
+            if (angle > 90)
+            {
+                continue;
+            }
+
+            if (maxAngle > angle)
+            {
+                currentArea = mushroomArea;
+                maxAngle = angle;
+            }
+        }
+
+        if (currentArea == null)
+        {
+            currentArea = _assetsCollection.MainMushroomArea;
+        }
+
+        return currentArea;
     }
 }

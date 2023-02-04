@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using UnityEngine;
 
 public class MushroomControls : Service, IUpdate, IStart, IInject
@@ -52,7 +51,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void Shoot()
     {
-        if (Services.Get<CollectionService>().MushroomAreas.Count >= _maxMushroomAreas)
+        if (Services.Get<CollectionService>().GetAreaCount >= _maxMushroomAreas)
         {
             return;
         }

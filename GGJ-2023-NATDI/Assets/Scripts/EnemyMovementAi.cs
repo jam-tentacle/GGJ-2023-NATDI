@@ -62,6 +62,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         pos += delta;
         pos.y = _agent.nextPosition.y;
         transform.position = pos;
+        _agent.nextPosition = transform.position;
     }
 
     private void OnDestroy()
@@ -102,15 +103,34 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
             moving = false;
         }
 
+        if (moving)
+        {
+            RotateTowardsMovementDir();
+        }
+
         _characterAnimator.SetVelocityZ(_agent.velocity.magnitude);
         _characterAnimator.SetMoving(moving);
         _agent.nextPosition = transform.position;
     }
 
+    private void RotateTowardsMovementDir()
+    {
+        if (_agent.velocity.sqrMagnitude < 0.01f) return;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(_agent.velocity),
+            Time.deltaTime * _agent.angularSpeed);
+
+        // Keep X and Z rotation at 0.
+        Quaternion q = transform.rotation;
+        q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+        transform.rotation = q;
+    }
+
     private void OnTargetUpdated()
     {
-        transform.LookAt(_targeter.CurrentMushroom.transform);
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        // transform.LookAt(_targeter.CurrentMushroom.transform);
+        // transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         _agent.SetDestination(_targeter.CurrentMushroom.Position);
     }
 

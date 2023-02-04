@@ -73,7 +73,6 @@ public class CollectionService : Service, IStart
 
     public MushroomArea GetNearestMushroomArea(Vector3 position)
     {
-        // var directionToMain = (position - _assetsCollection.MainMushroomArea.Position).normalized;
         var directionToMain = Vector3.right;
 
         var maxAngle = 90;

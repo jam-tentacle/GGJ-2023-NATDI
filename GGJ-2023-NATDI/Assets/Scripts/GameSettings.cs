@@ -13,6 +13,10 @@ public class GameSettings : ScriptableObject
     public float SkunkDamage = 1f;
     public float SkunkDamageCooldown = 2f;
     public float SkunkDamageRadius = 5f;
+
+    [Header("Spike")]
+    public float SpikeDamage = 10f;
+
     [Space(20)]
     public float ChangeAreaTargetTime = 1f;
     public float SaveAreaTargetDistance = 7f;

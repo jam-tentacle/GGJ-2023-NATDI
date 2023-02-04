@@ -17,7 +17,7 @@ public class Spike : MonoBehaviour
         Damageable receiver = other.gameObject.GetComponent<Damageable>();
         if (receiver == null) return;
 
-        receiver.ReceiveHit(2f, Vector3.zero);
+        receiver.ReceiveHit(Services.Get<AssetsCollection>().Settings.SpikeDamage, Vector3.zero);
         other.transform.gameObject.GetComponent<CharacterFX>().SpikeEffect();
     }
 }

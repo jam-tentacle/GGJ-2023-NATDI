@@ -15,17 +15,17 @@ namespace NATDI.Tower
         private ITarget _enemyTarget;
         private float _timeSinceLastFire;
         private AssetsCollection _assetsCollection;
+        private AssetsCollection AssetsCollection => _assetsCollection ??= Services.Get<AssetsCollection>();
 
         void Start()
         {
             _collection = Services.Get<CollectionService>();
-            _assetsCollection = Services.Get<AssetsCollection>();
         }
 
         public void GameUpdate(float delta)
         {
-            _timeSinceLastFire += Time.deltaTime;
-            if (_timeSinceLastFire >= _assetsCollection.Settings.FireTowerCooldown)
+            _timeSinceLastFire += delta;
+            if (_timeSinceLastFire >= AssetsCollection.Settings.FireTowerCooldown)
             {
                 if (TryFireProjectile())
                 {
@@ -37,9 +37,9 @@ namespace NATDI.Tower
         protected virtual bool TryFireProjectile()
         {
             if (_enemyTarget == null || !_enemyTarget.IsAlive ||
-                Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position) > _assetsCollection.Settings.FireTowerRadius)
+                Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position) > AssetsCollection.Settings.FireTowerRadius)
             {
-                _enemyTarget = _collection.GetNearestMushroomer(transform.position, _assetsCollection.Settings.FireTowerRadius);
+                _enemyTarget = _collection.GetNearestMushroomer(transform.position, AssetsCollection.Settings.FireTowerRadius);
             }
 
             if (_enemyTarget is null)
@@ -52,7 +52,7 @@ namespace NATDI.Tower
                 return false;
             }
 
-            if (_assetsCollection.Settings.FireTowerRadius > Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position))
+            if (AssetsCollection.Settings.FireTowerRadius > Vector3.Distance(_enemyTarget.ShootTargetPosition, transform.position))
             {
                 return false;
             }

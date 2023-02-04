@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MushroomCreatorReloadTime: 15
   TowerDamage: 1
-  FireTowerRadius: 7
+  FireTowerRadius: 6
   FireTowerCooldown: 1
   SkunkDamage: 4
   SkunkDamageCooldown: 1
   SkunkDamageRadius: 5
+  SpikeDamage: 10
   ChangeAreaTargetTime: 1
   SaveAreaTargetDistance: 7

@@ -76,7 +76,11 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     private void SpawnMushroomArea(Vector3 position)
     {
         var terrain = GetTerrainByPosition(position);
-        MushroomArea area = _spawnerService.SpawnMushroomArea(position, terrain);
+        if (!_spawnerService.TrySpawnMushroomArea(position, terrain, out var area))
+        {
+            Debug.Log($"no mushroom area spawned. terrain {terrain} is banned");
+            return;
+        }
 
         _cameraController.SetTarget(area);
         _shootLine.SetTarget(area);

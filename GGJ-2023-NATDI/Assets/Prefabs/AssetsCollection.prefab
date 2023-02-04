@@ -50,9 +50,10 @@ MonoBehaviour:
   DefaultMushroomArea: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
   DefaultMushroom: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
   MushroomAreasByTerrains:
-  - Terrain: 4
+  - Terrain: 1
     MushroomArea: {fileID: 8989684834976223351, guid: 56f72bb10466698418c3ed4e0745416f, type: 3}
     Mushroom: {fileID: 5059522914703486292, guid: 2410cc2a5e5e63547a4d0450e40d6d71, type: 3}
   - Terrain: 2
     MushroomArea: {fileID: 0}
     Mushroom: {fileID: 4610576889116696839, guid: 243ca73c66251da4ab6249ca408b9139, type: 3}
+  MainMushroomArea: {fileID: 0}

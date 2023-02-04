@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,10 @@ public class CollectionService : Service, IStart
     private List<EnemyMovementAi> _mushroomers = new();
     private List<MushroomArea> MushroomAreas = new();
     public int GetAreaCount => MushroomAreas.Count;
+
+    public List<EnemyMovementAi> Mushroomers => _mushroomers;
+    public event Action<EnemyMovementAi> OnAddMushroomer;
+    public event Action<EnemyMovementAi> OnRemoveMushroomer;
 
     private AssetsCollection _assetsCollection;
 
@@ -30,14 +35,16 @@ public class CollectionService : Service, IStart
         _mushrooms.Remove(mushroom);
     }
 
-    public void AddMushroomer(EnemyMovementAi mushrromer)
+    public void AddMushroomer(EnemyMovementAi value)
     {
-        _mushroomers.Add(mushrromer);
+        Mushroomers.Add(value);
+        OnAddMushroomer?.Invoke(value);
     }
 
     public void RemoveMushroomer(EnemyMovementAi value)
     {
-        _mushroomers.Remove(value);
+        Mushroomers.Remove(value);
+        OnRemoveMushroomer?.Invoke(value);
     }
 
     public Mushroom GetNearestMushroom(Vector3 position)
@@ -52,7 +59,7 @@ public class CollectionService : Service, IStart
 
     public EnemyMovementAi GetNearestMushroomer(Vector3 position, float minDistance)
     {
-        return GetNearestTarget(position, _mushroomers, minDistance);
+        return GetNearestTarget(position, Mushroomers, minDistance);
     }
 
     private T GetNearestTarget<T>(Vector3 position, ICollection<T> collection, float minDistance = float.MaxValue) where T : ITarget

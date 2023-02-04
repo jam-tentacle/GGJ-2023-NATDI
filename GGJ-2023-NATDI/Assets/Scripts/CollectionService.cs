@@ -73,14 +73,22 @@ public class CollectionService : Service, IStart
 
     public MushroomArea GetNearestMushroomArea(Vector3 position)
     {
-        var directionToMain = (position - _assetsCollection.MainMushroomArea.Position).normalized;
+        // var directionToMain = (position - _assetsCollection.MainMushroomArea.Position).normalized;
+        var directionToMain = Vector3.right;
 
-        float maxAngle = 180;
+        var maxAngle = 90;
+
+        float currentAngle = 0f;
         MushroomArea currentArea = null;
 
         foreach (var mushroomArea in MushroomAreas)
         {
             if (mushroomArea == _assetsCollection.MainMushroomArea)
+            {
+                continue;
+            }
+
+            if (position.x > mushroomArea.Position.x)
             {
                 continue;
             }
@@ -95,19 +103,19 @@ public class CollectionService : Service, IStart
                 continue;
             }
 
-            var directionToArea = (position - mushroomArea.Position).normalized;
+            var directionToArea = ( mushroomArea.Position - position).normalized;
 
             var angle = Vector3.Angle(directionToMain, directionToArea);
 
-            if (angle > 90)
+            if (angle >= maxAngle)
             {
                 continue;
             }
 
-            if (maxAngle > angle)
+            if (angle > currentAngle)
             {
                 currentArea = mushroomArea;
-                maxAngle = angle;
+                currentAngle = angle;
             }
         }
 

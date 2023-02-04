@@ -21,6 +21,8 @@ public class BusService : Service, IStart, IUpdate
 
     public void GameUpdate(float delta)
     {
+        return;
+
         _currentTimeData += Time.deltaTime;
         if (_currentTimeData < _busScheduleData[_currentBusArrives].BusArriveSchedule) return;
 

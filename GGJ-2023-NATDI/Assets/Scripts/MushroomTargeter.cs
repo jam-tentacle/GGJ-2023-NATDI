@@ -31,6 +31,7 @@ public class MushroomTargeter
         if (_currentArea == null || _currentMushroom == null)
         {
             TryChangeTarget();
+            return;
         }
 
         _currentTime += delta;
@@ -44,10 +45,7 @@ public class MushroomTargeter
 
     public void TryChangeTarget()
     {
-        if (_currentArea == null || !_currentArea.HasMushrooms)
-        {
-            TryChangeAreaTarget();
-        }
+        TryChangeAreaTarget();
 
         TryChangeMushroomTarget();
     }
@@ -56,6 +54,11 @@ public class MushroomTargeter
     {
         if (_currentArea != null && _currentArea.HasMushrooms && _assetsCollection.Settings.SaveAreaTargetDistance >=
             Vector3.Distance(_holder.position, _currentArea.Position))
+        {
+            return;
+        }
+
+        if (_currentArea != null && _currentArea.HasMushrooms && _currentArea.Position.x <= _holder.position.x)
         {
             return;
         }
@@ -69,7 +72,7 @@ public class MushroomTargeter
         _currentArea.IsUnderAim = true;
     }
 
-    public void TryChangeMushroomTarget()
+    private void TryChangeMushroomTarget()
     {
         _currentMushroom = _collectionService.GetNearestMushroom(_holder.position, _currentArea);
 

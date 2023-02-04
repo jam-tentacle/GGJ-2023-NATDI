@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireCooldown: 2
+  _radius: 10
   _randomAudioSource: {fileID: 8660499106079011789}
-  _fireParticleSystem: {fileID: 0}
   _projectilePoint: {fileID: 2153971276738926717}
   _damagerProjectile: {fileID: 5204575207941219009}
 --- !u!1 &8157692074120253595
@@ -350,6 +350,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MushroomTower
       objectReference: {fileID: 0}
+    - target: {fileID: 6324617091972031134, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 95d03228dc0820743a544903e7e652bf, type: 2}
+    - target: {fileID: 6324617091972031134, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89dc47077755a7d498607c9728e1fea8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
 --- !u!4 &5059522914703486293 stripped

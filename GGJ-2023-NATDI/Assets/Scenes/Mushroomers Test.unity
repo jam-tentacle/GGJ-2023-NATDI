@@ -366,6 +366,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3422582512375930649, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
+      propertyPath: m_Name
+      value: TerrainService
+      objectReference: {fileID: 0}
     - target: {fileID: 6001850054190710205, guid: 3044ff0bde8e84ca89feced5e3793248, type: 3}
       propertyPath: _busScheduleData.Array.size
       value: 3

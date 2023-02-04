@@ -89,7 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bc2283a5eb41a45872060537de35c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _busScheduleData: []
+  _busScheduleData:
+  - BusArriveSchedule: 5
+  - BusArriveSchedule: 10
+  - BusArriveSchedule: 15
 --- !u!1 &1161961971292542122
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +152,7 @@ GameObject:
   - component: {fileID: 491869368392831252}
   - component: {fileID: 8341084995997447235}
   m_Layer: 0
-  m_Name: TerrainSerivce
+  m_Name: TerrainService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

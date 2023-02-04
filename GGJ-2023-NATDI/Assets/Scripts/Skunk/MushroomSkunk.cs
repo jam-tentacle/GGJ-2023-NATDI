@@ -95,5 +95,11 @@ namespace NATDI.Skunk
                 node = next;
             }
         }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, _settings.SkunkDamageRadius);
+        }
     }
 }

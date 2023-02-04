@@ -17,7 +17,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
     public Vector3 Position => transform.position;
     public Vector3 ShootTargetPosition => _shootPoint.position;
     public Vector3 Velocity => _agent.velocity;
-    public bool IsAlive => this != null;
+    public bool IsAlive => this != null && !_damageable.Dead;
 
     private void Start()
     {

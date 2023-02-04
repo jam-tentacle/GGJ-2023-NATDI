@@ -13,7 +13,7 @@ public class TerrainService : Service, IInject
         _painter = _terrain.GetComponent<Painter>();
     }
 
-    public void Modify(Vector3 position) => _painter.Modify(position);
+    public void Modify(Vector3 position, float radius) => _painter.Modify(position, radius);
 
     public TerrainLayerType GetTerrainLayerType(Vector3 position) => _painter.GetTerrainLayerType(position);
 

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace KevinCastejon.ConeMesh
 {
     [CustomEditor(typeof(Cone))]
-    public class ConeEditor : Editor
+    public class ConeEditor : OdinEditor
     {
         private SerializedProperty _pivotAtTop;
         private SerializedProperty _orientation;
@@ -41,6 +42,7 @@ namespace KevinCastejon.ConeMesh
 
         public override void OnInspectorGUI()
         {
+            base.OnInspectorGUI();
             bool changed;
             serializedObject.Update();
             EditorGUI.BeginChangeCheck();

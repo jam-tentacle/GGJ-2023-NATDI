@@ -1,5 +1,8 @@
+using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace KevinCastejon.ConeMesh
@@ -17,6 +20,14 @@ namespace KevinCastejon.ConeMesh
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class Cone : MonoBehaviour
     {
+        [Button("Generate")]
+        private void Generate()
+        {
+            GenerateCone();
+            Physics.BakeMesh(_coneMesh.GetInstanceID(), false);
+            AssetDatabase.CreateAsset(_coneMesh, "Assets/TestMesh.asset");
+        }
+
         [SerializeField]
         private bool _pivotAtTop = true;
         [SerializeField]

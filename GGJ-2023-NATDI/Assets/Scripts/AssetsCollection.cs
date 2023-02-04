@@ -15,6 +15,8 @@ public class AssetsCollection : Service
 
     public MushroomArea MainMushroomArea;
     public SpikeLine SpikeLinePrefab;
+    public ParticleSystem BloodEffect;
+    public ParticleSystem SpikeEffect;
 
     [Serializable]
     public class MushroomAreaByTerrain

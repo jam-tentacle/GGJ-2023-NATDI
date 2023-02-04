@@ -45,7 +45,14 @@ public class SpikeLine : MonoBehaviour
 
         foreach (Spike spike in _spikes)
         {
-            spike.gameObject.SetActive(hasMushrooms);
+            if (hasMushrooms)
+            {
+                spike.Enable();
+            }
+            else
+            {
+                spike.Disable();
+            }
         }
     }
 }

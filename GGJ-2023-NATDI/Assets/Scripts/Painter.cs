@@ -478,17 +478,28 @@ public class Painter : MonoBehaviour
 
     public TerrainLayerType GetTerrainLayerType(Vector3 position)
     {
-        Vector2Int pos = GetTerrainPosition(position);
+        Vector3 locationInTerrain = position - targetTerrain.transform.position;
+        Vector3 size = GetTerrainSize();
+        locationInTerrain = new Vector3(locationInTerrain.x / size.x, 0, locationInTerrain.z / size.z);
 
-        splat = targetTerrainData.GetAlphamaps(pos.x, pos.y, 1, 1);
+        locationInTerrain = new(locationInTerrain.x * terrainHeightMapWidth,
+            0,
+            locationInTerrain.z * terrainHeightMapHeight);
 
-        float[] weights = new float[targetTerrainData.alphamapLayers];
+        Vector2Int pos = new((int)locationInTerrain.x,
+            (int)locationInTerrain.z);
+
+        splat = targetTerrainData.GetAlphamaps(pos.x - 1, pos.y - 1, 1, 1);
+
+        float last = 0;
         for (int i = 0; i < splat.GetLength(2); i++)
         {
-            weights[i] = splat[0, 0, i];
-            if (weights[i] > 0.5f) return (TerrainLayerType)i;
+            if (splat[0, 0, i] > 0.9f)
+            {
+                last = i;
+            }
         }
 
-        return TerrainLayerType.Rock;
+        return (TerrainLayerType)last;
     }
 }

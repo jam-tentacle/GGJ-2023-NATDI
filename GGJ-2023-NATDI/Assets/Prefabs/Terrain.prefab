@@ -425,8 +425,8 @@ MonoBehaviour:
   brushSelection: 0
   areaOfEffectSizeX: 40
   areaOfEffectSizeZ: 40
-  _strength: 1
+  _strength: 0.05
   flattenHeight: 0
   effectType: 4
   paints: []
-  paint: 3
+  paint: 6

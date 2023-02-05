@@ -50,6 +50,8 @@ MonoBehaviour:
   Tutorial: {fileID: 4140108186932878216}
   WaveStationText: {fileID: 0}
   WaveUI: {fileID: 8467327017234093427}
+  WinUI: {fileID: 2920403573779855023}
+  LoseUI: {fileID: 6147304868033055945}
 --- !u!1001 &4853253760533462379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,6 +154,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5950898028535686368, guid: 0463c127b254db144ab87db546bbed03, type: 3}
   m_PrefabInstance: {fileID: 4853253760533462379}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2920403573779855023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7772477414407474116, guid: 0463c127b254db144ab87db546bbed03, type: 3}
+  m_PrefabInstance: {fileID: 4853253760533462379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4140108186932878216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8804157807201806051, guid: 0463c127b254db144ab87db546bbed03, type: 3}
@@ -174,6 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e46b3483984dc499c97f4a4438368b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6147304868033055945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1591360157614289314, guid: 0463c127b254db144ab87db546bbed03, type: 3}
+  m_PrefabInstance: {fileID: 4853253760533462379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8467327017234093427 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3952970369910089752, guid: 0463c127b254db144ab87db546bbed03, type: 3}

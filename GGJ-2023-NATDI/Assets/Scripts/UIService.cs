@@ -1,6 +1,7 @@
 ﻿using NATDI;
 using System;
 using TMPro;
+using UnityEngine;
 
 public class UIService : Service
 {
@@ -11,4 +12,7 @@ public class UIService : Service
     public TMP_Text WaveStationText;
 
     public WaveUI WaveUI;
+
+    public GameObject WinUI;
+    public GameObject LoseUI;
 }

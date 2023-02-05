@@ -6,6 +6,7 @@ public class CollectionService : Service, IStart
 {
     private List<Mushroom> _mushrooms = new();
     private List<EnemyMovementAi> _mushroomers = new();
+    public int GetMushroomerCount => _mushroomers.Count;
     private List<MushroomArea> MushroomAreas = new();
     public int GetAreaCount => MushroomAreas.Count;
 

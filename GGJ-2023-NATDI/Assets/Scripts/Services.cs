@@ -72,11 +72,6 @@ public class Services : MonoBehaviour
 
     private void Start()
     {
-        if (_flowService.CurrentFlowState == FlowService.FlowState.Paused)
-        {
-            return;
-        }
-
         foreach (IStart start in _starts)
         {
             start.GameStart();

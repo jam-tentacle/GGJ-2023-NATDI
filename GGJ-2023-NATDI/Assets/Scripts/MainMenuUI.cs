@@ -1,10 +1,18 @@
 ﻿using JetBrains.Annotations;
+using System;
 using UnityEngine;
 
 namespace NATDI
 {
     public class MainMenuUI : MonoBehaviour
     {
+        private UIService _uiService;
+
+        private void Start()
+        {
+            _uiService = Services.Get<UIService>();
+        }
+
         [UsedImplicitly]
         public void ClickRestart()
         {
@@ -15,6 +23,12 @@ namespace NATDI
         public void ClickPlay()
         {
             Services.Get<FlowService>().Resume();
+        }
+
+        [UsedImplicitly]
+        public void ClickTutorial()
+        {
+            _uiService.Tutorial.SetActive(true);
         }
 
         public void SetActive(bool value)

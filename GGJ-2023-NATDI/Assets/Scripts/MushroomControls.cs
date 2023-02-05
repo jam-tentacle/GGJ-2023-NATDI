@@ -144,4 +144,9 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     {
         return Services.Get<TerrainService>().GetTerrainLayerType(position);
     }
+
+    public void SetForceReload()
+    {
+        _leftReloadTime = Mathf.Min(_leftReloadTime, _assetsCollection.Settings.ForceMushroomCreatorReloadTime);
+    }
 }

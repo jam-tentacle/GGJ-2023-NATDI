@@ -53,6 +53,7 @@ public class SpawnerService : Service, IInject
         if (areaPrefab is null)
         {
             area = null;
+            Services.Get<MushroomControls>().SetForceReload();
             return false;
         }
         area = Instantiate(areaPrefab);

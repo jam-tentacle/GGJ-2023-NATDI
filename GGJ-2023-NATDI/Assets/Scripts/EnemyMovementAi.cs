@@ -39,6 +39,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         Debug.Log("Died");
         _targeter.Stop();
         _characterAnimator.SetDying();
+        _agent.enabled = false;
     }
 
     private void OnHealthChanged(float deltaHealth, Vector3 impulse)

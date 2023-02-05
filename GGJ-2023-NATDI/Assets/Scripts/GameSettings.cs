@@ -4,6 +4,8 @@
 public class GameSettings : ScriptableObject
 {
     public float MushroomCreatorReloadTime = 10f;
+    public float ForceMushroomCreatorReloadTime = 2f;
+
     [Header("Tower")]
     public float TowerDamage = 1f;
     public float FireTowerRadius = 10f;

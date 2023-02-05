@@ -6,18 +6,30 @@ namespace NATDI
 {
     public class TutorialUI : MonoBehaviour
     {
+        private bool _showOnStart = true;
+
         [UsedImplicitly]
         public void ClickOk()
         {
-            SetActive(false);
+            Close();
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SetActive(false);
+                Close();
             }
+        }
+
+        private void Close()
+        {
+            if (_showOnStart)
+            {
+                _showOnStart = false;
+                Services.Get<FlowService>().Resume();
+            }
+            SetActive(false);
         }
 
         public void SetActive(bool value)

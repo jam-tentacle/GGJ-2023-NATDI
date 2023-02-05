@@ -20,6 +20,7 @@ namespace NATDI
             Pause();
             _uiService = Services.Get<UIService>();
             _uiService.Tutorial.SetActive(true);
+            _uiService.MainMenu.SetActive(false);
         }
 
         public void RestartGame()

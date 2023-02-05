@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   MushroomCreatorReloadTime: 15
+  ForceMushroomCreatorReloadTime: 1
   TowerDamage: 1
   FireTowerRadius: 6
   FireTowerCooldown: 1

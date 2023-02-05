@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2960322d4d8846d5b3ddf6ba22ad9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leg: {fileID: 5156236060552108529}
+  _leg: {fileID: 641487718119796644}
   _rb: {fileID: 0}
   _spawnSound: {fileID: 6171862122912301116}
 --- !u!82 &6171862122912301116

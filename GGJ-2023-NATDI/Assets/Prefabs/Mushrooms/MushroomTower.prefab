@@ -345,6 +345,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
+      propertyPath: _leg
+      value: 
+      objectReference: {fileID: 8053417490866157719}
+    - target: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
       propertyPath: _spawnSound
       value: 
       objectReference: {fileID: 4283174203468619682}
@@ -617,3 +621,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e5f030be664d4c40adff327e3abaa7d, type: 3}
+--- !u!4 &8053417490866157719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 0e5f030be664d4c40adff327e3abaa7d, type: 3}
+  m_PrefabInstance: {fileID: 8053417490865758739}
+  m_PrefabAsset: {fileID: 0}

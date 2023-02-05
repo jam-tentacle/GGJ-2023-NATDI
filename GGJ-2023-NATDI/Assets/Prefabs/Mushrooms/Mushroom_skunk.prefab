@@ -273,6 +273,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
+      propertyPath: _leg
+      value: 
+      objectReference: {fileID: 2179663399562371061}
+    - target: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
       propertyPath: _spawnSound
       value: 
       objectReference: {fileID: 8204657055210283151}

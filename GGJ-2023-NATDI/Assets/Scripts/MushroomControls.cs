@@ -47,19 +47,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
             return;
         }
 
-        if (_leftReloadTime <= 0)
-        {
-            Shoot();
-        }
-        else
-        {
-#if DEBUG
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                Shoot();
-            }
-#endif
-        }
+        TryShoot();
     }
 
     private void UpdateMushrooms(float delta)
@@ -77,27 +65,49 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         _uiService.ReloadShootUI.UpdateView(_leftReloadTime, _assetsCollection.Settings.MushroomCreatorReloadTime);
     }
 
-    private void Shoot()
+    private void TryShoot()
     {
         if (_layerType == TerrainLayerType.Sand)
         {
-            Vector3 targetPosition = _shootLine.GetEndPosition();
-            SpawnMushroomArea(_terrainService.TryGetTerrainPosition(targetPosition));
+            ShootSand();
         }
         else
         {
-            Vector3 targetPosition = _shootLine.GetEndPosition();
-            targetPosition.y = 0;
-
-            Projectile projectile = Instantiate(_assetsCollection.SporePrefab);
-            Vector3 position = _cameraController.Target.Position;
-            position.y += 0.5f;
-            projectile.transform.position = position;
-            projectile.Hit += OnProjectileHit;
-            projectile.Launch(targetPosition);
-            _cameraController.SetFollowTarget(projectile);
-            _leftReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
+            if (_leftReloadTime <= 0)
+            {
+                ShootDefault();
+            }
+            else
+            {
+                #if DEBUG
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    ShootDefault();
+                }
+                #endif
+            }
         }
+    }
+
+    private void ShootSand()
+    {
+        Vector3 targetPosition = _shootLine.GetEndPosition();
+        SpawnMushroomArea(_terrainService.TryGetTerrainPosition(targetPosition));
+    }
+
+    private void ShootDefault()
+    {
+        Vector3 targetPosition = _shootLine.GetEndPosition();
+        targetPosition.y = 0;
+
+        Projectile projectile = Instantiate(_assetsCollection.SporePrefab);
+        Vector3 position = _cameraController.Target.Position;
+        position.y += 0.5f;
+        projectile.transform.position = position;
+        projectile.Hit += OnProjectileHit;
+        projectile.Launch(targetPosition);
+        _cameraController.SetFollowTarget(projectile);
+        _leftReloadTime = _assetsCollection.Settings.MushroomCreatorReloadTime;
     }
 
     private void OnProjectileHit(Vector3 position, Projectile projectile)

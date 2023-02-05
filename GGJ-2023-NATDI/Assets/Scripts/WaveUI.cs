@@ -10,7 +10,10 @@ public class WaveUI : MonoBehaviour
     [SerializeField] private string _leftWavesPrefix;
     [SerializeField] private TMP_Text _leftWavesText;
 
-    public void SetContent(bool hasLeftTime, float leftTime, int leftWaves)
+    [SerializeField] private string _leftEnemiesPrefix = "Enemies: ";
+    [SerializeField] private TMP_Text _leftEnemiesText;
+
+    public void SetContent(bool hasLeftTime, float leftTime, int leftWaves, int enemies)
     {
         if (hasLeftTime)
         {
@@ -23,5 +26,7 @@ public class WaveUI : MonoBehaviour
         }
 
         _leftWavesText.text = $"{_leftWavesPrefix}{leftWaves}";
+
+        _leftEnemiesText.text = $"{_leftEnemiesPrefix}{enemies}";
     }
 }

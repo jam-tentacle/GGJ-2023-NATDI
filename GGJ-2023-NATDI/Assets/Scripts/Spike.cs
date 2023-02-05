@@ -9,6 +9,7 @@ public class Spike : MonoBehaviour
     {
         _startPos = transform.position;
         transform.position = _startPos + Vector3.down * 5f;
+        transform.Rotate(Vector3.up, Random.Range(0f, 360f));
     }
 
     public void Enable()

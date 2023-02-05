@@ -1,10 +1,12 @@
 ﻿using NATDI;
+using System;
 using TMPro;
 
 public class UIService : Service
 {
     public ReloadShootUI ReloadShootUI;
     public MainMenuUI MainMenu;
+    public TutorialUI Tutorial;
 
     public TMP_Text WaveStationText;
 

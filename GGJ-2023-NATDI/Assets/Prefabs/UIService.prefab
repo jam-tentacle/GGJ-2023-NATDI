@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReloadShootUI: {fileID: 8636427294462576326}
   MainMenu: {fileID: 4759516980893023688}
+  Tutorial: {fileID: 4140108186932878216}
   WaveStationText: {fileID: 0}
   WaveUI: {fileID: 8467327017234093427}
 --- !u!1001 &4853253760533462379
@@ -151,6 +152,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5950898028535686368, guid: 0463c127b254db144ab87db546bbed03, type: 3}
   m_PrefabInstance: {fileID: 4853253760533462379}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4140108186932878216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8804157807201806051, guid: 0463c127b254db144ab87db546bbed03, type: 3}
+  m_PrefabInstance: {fileID: 4853253760533462379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe5ff979ce94ab1bd965b7d340350fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4759516980893023688 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 96559037163602083, guid: 0463c127b254db144ab87db546bbed03, type: 3}

@@ -6,6 +6,7 @@ namespace NATDI
 {
     public class FlowService : Service
     {
+        private UIService _uiService;
         public FlowState CurrentFlowState { get; private set; } = FlowState.Playing;
 
         public enum FlowState
@@ -16,7 +17,9 @@ namespace NATDI
 
         private void Start()
         {
-            Services.Get<UIService>().MainMenu.SetActive(false);
+            Pause();
+            _uiService = Services.Get<UIService>();
+            _uiService.Tutorial.SetActive(true);
         }
 
         public void RestartGame()
@@ -37,7 +40,7 @@ namespace NATDI
                 return;
             }
             CurrentFlowState = FlowState.Playing;
-            Services.Get<UIService>().MainMenu.SetActive(false);
+            _uiService.MainMenu.SetActive(false);
         }
 
         private void Update()
@@ -46,7 +49,14 @@ namespace NATDI
             {
                 if (CurrentFlowState == FlowState.Paused)
                 {
-                    Resume();
+                    if (_uiService.Tutorial.gameObject.activeSelf)
+                    {
+                        _uiService.Tutorial.SetActive(false);
+                    }
+                    else
+                    {
+                        Resume();
+                    }
                 }
                 else if (CurrentFlowState == FlowState.Playing)
                 {

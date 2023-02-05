@@ -14,9 +14,14 @@ public class SpawnerService : Service, IInject
 
     public Mushroom SpawnMushroom(Transform t, float radius, TerrainLayerType terrain)
     {
+        return SpawnMushroom(t, radius, Services.Get<AssetsCollection>().GetMushroomByTerrain(terrain));
+    }
+
+    public Mushroom SpawnMushroom(Transform t, float radius, Mushroom prefab)
+    {
         Vector2 randomPos = Random.insideUnitCircle * radius;
         Vector3 localPos = new(randomPos.x, 0, randomPos.y);
-        Mushroom mushroom = Instantiate(Services.Get<AssetsCollection>().GetMushroomByTerrain(terrain), t);
+        Mushroom mushroom = Instantiate(prefab, t);
         mushroom.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
         if (_terrainService.RayCastOnTerrain(t.position + localPos, out RaycastHit hit))
         {

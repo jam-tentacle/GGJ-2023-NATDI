@@ -12,6 +12,8 @@ public class MushroomArea : MonoBehaviour, ITarget
     [SerializeField] private ChooseMushroomAreaTarget _chooseMushroomAreaTarget;
     public ChooseMushroomAreaTarget ChooseMushroomAreaTarget => _chooseMushroomAreaTarget;
 
+    [SerializeField] private bool _isBase;
+
     private SpawnerService _spawnerService;
     private TerrainService _terrainService;
 
@@ -47,7 +49,17 @@ public class MushroomArea : MonoBehaviour, ITarget
 
     private void SpawnMushroom()
     {
-        Mushroom mushroom = _spawnerService.SpawnMushroom(transform, _radius, CachedTerrainLayerType);
+        Mushroom mushroom = null;
+
+        if (_isBase)
+        {
+            mushroom = _spawnerService.SpawnMushroom(transform, _radius, Services.Get<AssetsCollection>().BaseMushroom);
+        }
+        else
+        {
+            mushroom = _spawnerService.SpawnMushroom(transform, _radius, CachedTerrainLayerType);
+        }
+
         _mushrooms.AddLast(mushroom);
     }
 

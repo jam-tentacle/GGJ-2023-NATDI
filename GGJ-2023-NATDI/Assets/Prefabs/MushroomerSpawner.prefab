@@ -116,30 +116,30 @@ MonoBehaviour:
     OverallSpawnTime: 0
     SpawnBetweenMushroomerTime: 0
   - MushroomerCount: 1
-    OverallSpawnTime: 15
+    OverallSpawnTime: 25
     SpawnBetweenMushroomerTime: 1
-  - MushroomerCount: 2
-    OverallSpawnTime: 30
+  - MushroomerCount: 3
+    OverallSpawnTime: 50
     SpawnBetweenMushroomerTime: 1
   - MushroomerCount: 4
-    OverallSpawnTime: 60
-    SpawnBetweenMushroomerTime: 1
-  - MushroomerCount: 5
     OverallSpawnTime: 90
     SpawnBetweenMushroomerTime: 1
   - MushroomerCount: 6
-    OverallSpawnTime: 120
+    OverallSpawnTime: 130
     SpawnBetweenMushroomerTime: 1
   - MushroomerCount: 8
-    OverallSpawnTime: 150
+    OverallSpawnTime: 170
     SpawnBetweenMushroomerTime: 1
   - MushroomerCount: 10
-    OverallSpawnTime: 180
-    SpawnBetweenMushroomerTime: 1
-  - MushroomerCount: 12
     OverallSpawnTime: 210
     SpawnBetweenMushroomerTime: 1
+  - MushroomerCount: 12
+    OverallSpawnTime: 250
+    SpawnBetweenMushroomerTime: 1
   - MushroomerCount: 13
-    OverallSpawnTime: 240
+    OverallSpawnTime: 290
+    SpawnBetweenMushroomerTime: 1
+  - MushroomerCount: 15
+    OverallSpawnTime: 330
     SpawnBetweenMushroomerTime: 1
   _gameObject: {fileID: 2151019122430239327, guid: 9fcf1e70890f7d4498ab9eda16d763d3, type: 3}

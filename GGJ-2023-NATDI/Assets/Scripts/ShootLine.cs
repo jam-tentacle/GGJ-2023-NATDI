@@ -12,6 +12,7 @@ public class ShootLine : Service, ILateUpdate, IInject
     [SerializeField] private float _range = 10;
     [SerializeField] private float _sandAimingRange = 21;
     [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private LineRenderer _lineRendererSecond;
     private CameraController _cameraController;
     public AimingMode Mode { get; set; } = AimingMode.Default;
     private TerrainService _terrainService;
@@ -40,6 +41,7 @@ public class ShootLine : Service, ILateUpdate, IInject
 
     private void DefaultAimingUpdate()
     {
+        _lineRendererSecond.gameObject.SetActive(false);
         _lineRenderer.useWorldSpace = false;
 
         Vector3 start = Vector3.zero;
@@ -89,16 +91,19 @@ public class ShootLine : Service, ILateUpdate, IInject
         Vector3 forward = _cameraController.transform.forward;
         Vector3 center = _cameraController.transform.position + new Vector3(forward.x, 0, forward.z) * _sandAimingRange;
 
-        _lineRenderer.positionCount = 4;
+        _lineRenderer.positionCount = 2;
         _lineRenderer.useWorldSpace = true;
+        _lineRendererSecond.gameObject.SetActive(true);
+        _lineRendererSecond.positionCount = 2;
+        _lineRendererSecond.useWorldSpace = true;
 
         Vector3 a = center + Vector3.left + Vector3.forward;
         Vector3 b = center + Vector3.left - Vector3.forward;
         Vector3 c = center - Vector3.left + Vector3.forward;
         Vector3 d = center - Vector3.left - Vector3.forward;
         _lineRenderer.SetPosition(0, _terrainService.TryGetTerrainPosition(a) + Vector3.up * 0.5f);
-        _lineRenderer.SetPosition(1, _terrainService.TryGetTerrainPosition(b) + Vector3.up * 0.5f);
-        _lineRenderer.SetPosition(2, _terrainService.TryGetTerrainPosition(c) + Vector3.up * 0.5f);
-        _lineRenderer.SetPosition(3, _terrainService.TryGetTerrainPosition(d) + Vector3.up * 0.5f);
+        _lineRenderer.SetPosition(1, _terrainService.TryGetTerrainPosition(d) + Vector3.up * 0.5f);
+        _lineRendererSecond.SetPosition(0, _terrainService.TryGetTerrainPosition(b) + Vector3.up * 0.5f);
+        _lineRendererSecond.SetPosition(1, _terrainService.TryGetTerrainPosition(c) + Vector3.up * 0.5f);
     }
 }

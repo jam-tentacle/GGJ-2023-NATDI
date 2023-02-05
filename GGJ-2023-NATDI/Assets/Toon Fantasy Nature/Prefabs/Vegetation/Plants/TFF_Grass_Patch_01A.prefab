@@ -1,88 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1695133379433751840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3520771786559709764}
-  - component: {fileID: 2066659090467810990}
-  - component: {fileID: 7926031885590932024}
-  m_Layer: 0
-  m_Name: TFF_Grass_Patch_01_LOD0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3520771786559709764
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695133379433751840}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5386681439893192499}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2066659090467810990
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695133379433751840}
-  m_Mesh: {fileID: 4300004, guid: 30e3a54c12bc780438417c3168041ccc, type: 3}
---- !u!23 &7926031885590932024
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695133379433751840}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 75e9f4706d18f104580d5ad30f56e376, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4726395179088287410
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +175,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5386681439893192499}
-  - component: {fileID: 5386681439879900051}
+  - component: {fileID: 8065040910677122922}
+  - component: {fileID: 7711798017329894415}
   m_Layer: 0
   m_Name: TFF_Grass_Patch_01A
   m_TagString: Untagged
@@ -285,37 +203,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &5386681439879900051
-LODGroup:
+--- !u!23 &8065040910677122922
+MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5386681439892955923}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.069016755, y: 0.25162184, z: -0.0029432178}
-  m_Size: 1.915409
-  m_FadeMode: 1
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.60110813
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 7926031885590932024}
-  - screenRelativeHeight: 0.29760554
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 13910374518697841}
-  - screenRelativeHeight: 0.1453167
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 4063103414038616506}
-  - screenRelativeHeight: 0.0432608
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1414009625774255285}
   m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &7711798017329894415
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386681439892955923}
+  m_Mesh: {fileID: 0}
 --- !u!1 &7397621893800062094
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,3 +336,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &6489177835656061639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5386681439893192499}
+    m_Modifications:
+    - target: {fileID: 5586823156776060903, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_Name
+      value: TFF_Grass_Patch_01_LOD0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+--- !u!4 &3520771786559709764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7697350595082305667, guid: 11a874b4b8da54568a95c7c9cc1799b5, type: 3}
+  m_PrefabInstance: {fileID: 6489177835656061639}
+  m_PrefabAsset: {fileID: 0}

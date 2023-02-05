@@ -350,14 +350,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7203380469429320523}
-  m_LocalRotation: {x: 0.3101123, y: 0, z: 0, w: 0.9506999}
+  m_LocalRotation: {x: 0.20680188, y: 0, z: 0, w: 0.9783829}
   m_LocalPosition: {x: 0, y: 8.072672, z: -8.781238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7203380468713970850}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 36.132, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.87, y: 0, z: 0}
 --- !u!20 &7203380469429320525
 Camera:
   m_ObjectHideFlags: 0
@@ -492,14 +492,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7203380470523361173}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: -0.3628231, y: -0.46474785, z: 0.21671547, w: -0.7780767}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7203380470057029567}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -298.3, z: 0}
 --- !u!108 &7203380470523361172
 Light:
   m_ObjectHideFlags: 0
@@ -511,7 +511,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.72987205, b: 0.7122642, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -934,6 +934,18 @@ PrefabInstance:
     - target: {fileID: 81643529933590936, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404169018164620916, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
+      propertyPath: _mushroomerSpawnData.Array.data[0].SpawnBetweenMushroomerTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404169018164620916, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
+      propertyPath: _mushroomerSpawnData.Array.data[1].SpawnBetweenMushroomerTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404169018164620916, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
+      propertyPath: _mushroomerSpawnData.Array.data[2].SpawnBetweenMushroomerTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8015297073040992763, guid: ae87af4a2ffc03e4ca56ace9e2ec6faa, type: 3}
       propertyPath: m_Name

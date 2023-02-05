@@ -8,6 +8,7 @@ public class SpikeLine : MonoBehaviour
     private List<Spike> _spikes = new();
     private MushroomArea _area1;
     private MushroomArea _area2;
+    private bool _hasMushrooms;
 
     private TerrainService TerrainService => _terrainService ?? Services.Get<TerrainService>();
 
@@ -41,11 +42,13 @@ public class SpikeLine : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool hasMushrooms = _area1.HasMushrooms && _area2.HasMushrooms;
+        if (_hasMushrooms == _area1.HasMushrooms && _area2.HasMushrooms) return;
+
+        _hasMushrooms = !_hasMushrooms;
 
         foreach (Spike spike in _spikes)
         {
-            if (hasMushrooms)
+            if (_hasMushrooms)
             {
                 spike.Enable();
             }
@@ -53,6 +56,7 @@ public class SpikeLine : MonoBehaviour
             {
                 spike.Disable();
             }
+
         }
     }
 }

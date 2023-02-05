@@ -423,8 +423,8 @@ MonoBehaviour:
   brushIMG:
   - {fileID: 2800000, guid: 5c38e2edb8ae412468d3186b2e38caf1, type: 3}
   brushSelection: 0
-  areaOfEffectSizeX: 10
-  areaOfEffectSizeZ: 10
+  areaOfEffectSizeX: 40
+  areaOfEffectSizeZ: 40
   _strength: 1
   flattenHeight: 0
   effectType: 4

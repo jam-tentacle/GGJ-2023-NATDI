@@ -36,6 +36,7 @@ public class Painter : MonoBehaviour
     public TerrainLayer[] paints; // a list containing all of the paints
     public int paint; // variable to select paint
     float[,,] splat; // A splat map is what unity uses to overlay all of your paints on to the terrain
+    private float _radius;
 
     void Awake()
     {
@@ -434,7 +435,7 @@ public class Painter : MonoBehaviour
                     Vector2 a = new Vector2(areaOfEffectSizeZ / 2, areaOfEffectSizeX / 2);
                     Vector2 b = new Vector2(xx, yy);
                     float distance = Vector2.Distance(a, b);
-                    if (distance < 5)
+                    if (distance < _radius * 9 / 3)
                         weights[paint] +=
                             brush[xx - AOEzMod, yy - AOExMod] * strength *
                             2000; // adds weight to the paint currently selected with the int paint variable
@@ -455,8 +456,9 @@ public class Painter : MonoBehaviour
         }
     }
 
-    public void Modify(Vector3 position)
+    public void Modify(Vector3 position, float radius)
     {
+        _radius = radius;
         Vector2Int pos = GetTerrainPosition(position);
         ModifyTerrain(pos.x, pos.y, _strength);
     }

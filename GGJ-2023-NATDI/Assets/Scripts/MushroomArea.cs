@@ -42,7 +42,7 @@ public class MushroomArea : MonoBehaviour, ITarget
             SpawnMushroom();
         }
 
-        _terrainService.Modify(transform.position);
+        _terrainService.Modify(transform.position, _radius);
     }
 
     private void SpawnMushroom()

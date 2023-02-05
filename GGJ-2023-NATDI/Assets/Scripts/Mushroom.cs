@@ -1,14 +1,12 @@
 using DG.Tweening;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Mushroom : MonoBehaviour, ITarget, IUpdate
 {
     [SerializeField] private Transform _leg;
-    //[SerializeField] private Transform _cap;
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] private AudioSource _spawnSound;
     private IUpdate[] _updatables;
 
     public Vector3 Position => transform.position;
@@ -46,5 +44,10 @@ public class Mushroom : MonoBehaviour, ITarget, IUpdate
         {
             updatable.GameUpdate(delta);
         }
+    }
+
+    public void PlaySpawnSound()
+    {
+        _spawnSound?.Play();
     }
 }

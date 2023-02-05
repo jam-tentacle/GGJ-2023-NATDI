@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leg: {fileID: 4902807832100360789}
   _rb: {fileID: 0}
+  _spawnSound: {fileID: 0}
 --- !u!1001 &4902807832100751577
 PrefabInstance:
   m_ObjectHideFlags: 0

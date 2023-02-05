@@ -14,6 +14,9 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
     private float _leftReloadTime;
     private CollectionService _collection;
     private MushroomArea _currentArea;
+    [SerializeField] private AudioSource _shootSound;
+    [SerializeField] private AudioSource _successShootSound;
+    [SerializeField] private AudioSource _failShootSound;
 
     public void Inject()
     {
@@ -97,6 +100,7 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     private void ShootDefault()
     {
+        _shootSound.Play();
         Vector3 targetPosition = _shootLine.GetEndPosition();
         targetPosition.y = 0;
 
@@ -121,9 +125,12 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
         TerrainLayerType terrain = GetTerrainByPosition(position);
         if (!_spawnerService.TrySpawnMushroomArea(position, terrain, out var area))
         {
+            _failShootSound.Play();
             Debug.Log($"no mushroom area spawned. terrain {terrain} is banned");
             return;
         }
+
+        _successShootSound.Play();
 
         if (_layerType == TerrainLayerType.Sand)
         {

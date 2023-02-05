@@ -47,7 +47,7 @@ public class MushroomArea : MonoBehaviour, ITarget
         _terrainService.Modify(transform.position, _radius);
     }
 
-    private void SpawnMushroom()
+    private void SpawnMushroom(bool respawn = false)
     {
         Mushroom mushroom = null;
 
@@ -57,7 +57,7 @@ public class MushroomArea : MonoBehaviour, ITarget
         }
         else
         {
-            mushroom = _spawnerService.SpawnMushroom(transform, _radius, CachedTerrainLayerType);
+            mushroom = _spawnerService.SpawnMushroom(transform, _radius, CachedTerrainLayerType, respawn);
         }
 
         _mushrooms.AddLast(mushroom);
@@ -98,7 +98,7 @@ public class MushroomArea : MonoBehaviour, ITarget
         if (_respawnTime <= _currentRespawnTime)
         {
             _currentRespawnTime = 0f;
-            SpawnMushroom();
+            SpawnMushroom(true);
         }
     }
 

@@ -49,6 +49,7 @@ MonoBehaviour:
   Settings: {fileID: 11400000, guid: 6ea57e29552ab1544842327d8df30d10, type: 2}
   DefaultMushroomArea: {fileID: 0}
   DefaultMushroom: {fileID: 4968233342323116819, guid: 9224d15e931544d55830b42a63cd2719, type: 3}
+  BaseMushroom: {fileID: 4968233342323116819, guid: c25cc17e0caf7a44293e2d692be2d8a4, type: 3}
   MushroomAreasByTerrains:
   - Terrain: 1
     MushroomArea: {fileID: 8989684834976223351, guid: 56f72bb10466698418c3ed4e0745416f, type: 3}

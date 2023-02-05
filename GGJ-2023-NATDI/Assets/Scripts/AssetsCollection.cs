@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class AssetsCollection : Service
 {
@@ -11,6 +10,7 @@ public class AssetsCollection : Service
     public GameSettings Settings;
     public MushroomArea DefaultMushroomArea;
     public Mushroom DefaultMushroom;
+    public Mushroom BaseMushroom;
     public List<MushroomAreaByTerrain> MushroomAreasByTerrains;
 
     public MushroomArea MainMushroomArea;

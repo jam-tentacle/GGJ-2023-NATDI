@@ -157,6 +157,11 @@ public class MushroomControls : Service, IUpdate, IStart, IInject
 
     public void SetForceReload()
     {
+        if (_layerType == TerrainLayerType.Sand)
+        {
+            return;
+        }
+
         _leftReloadTime = Mathf.Min(_leftReloadTime, _assetsCollection.Settings.ForceMushroomCreatorReloadTime);
     }
 }

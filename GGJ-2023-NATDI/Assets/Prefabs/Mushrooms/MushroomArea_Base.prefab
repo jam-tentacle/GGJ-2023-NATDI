@@ -56,6 +56,10 @@ PrefabInstance:
       value: MushroomArea_Base
       objectReference: {fileID: 0}
     - target: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
+      propertyPath: _isBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
       propertyPath: _radius
       value: 0.01
       objectReference: {fileID: 0}

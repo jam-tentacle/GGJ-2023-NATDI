@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 3973595785058453690}
   - component: {fileID: 8073205773266901379}
   - component: {fileID: 1543612182019631830}
+  - component: {fileID: 3540591846215117461}
   m_Layer: 5
   m_Name: UICamera
   m_TagString: Untagged
@@ -196,6 +197,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4441006499145843131}
   m_Enabled: 1
+--- !u!114 &3540591846215117461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4441006499145843131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed748808e24244fd88186a8c51ed9d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3690716459383309826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -222,6 +235,18 @@ PrefabInstance:
     - target: {fileID: 4475924096252301434, guid: 5af1377109c8f4e2799c1298df9cc780, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957514149448322078, guid: 5af1377109c8f4e2799c1298df9cc780, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 96559037163602083}
+    - target: {fileID: 5957514149448322078, guid: 5af1377109c8f4e2799c1298df9cc780, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickRestart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957514149448322078, guid: 5af1377109c8f4e2799c1298df9cc780, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NATDI.MainMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6405644894915513798, guid: 5af1377109c8f4e2799c1298df9cc780, type: 3}
       propertyPath: m_Name
@@ -567,6 +592,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3666879841905438798, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666879841905438798, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666879841905438798, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3739661912281023285, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -815,6 +852,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8840566114133132863, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840566114133132863, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840566114133132863, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992672940024370887, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992672940024370887, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992672940024370887, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06b8910d59353f04a89b7d8dfc3b35fd, type: 3}
 --- !u!224 &1995663430764201663 stripped
@@ -1038,6 +1099,18 @@ PrefabInstance:
     - target: {fileID: 730075841915700557, guid: 5bd819ba938794540b1ded836d556cdb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575604043744317548, guid: 5bd819ba938794540b1ded836d556cdb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 96559037163602083}
+    - target: {fileID: 2575604043744317548, guid: 5bd819ba938794540b1ded836d556cdb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickRestart
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575604043744317548, guid: 5bd819ba938794540b1ded836d556cdb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NATDI.MainMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2741077840884574256, guid: 5bd819ba938794540b1ded836d556cdb, type: 3}
       propertyPath: m_Layer

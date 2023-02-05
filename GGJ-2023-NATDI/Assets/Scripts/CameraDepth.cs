@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraDepth : MonoBehaviour
 {
-    private void Awake()
+    private void OnEnable()
     {
         GetComponent<Camera>().depthTextureMode = DepthTextureMode.None;
     }

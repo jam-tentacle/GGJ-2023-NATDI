@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
       propertyPath: _count.x
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
       propertyPath: _count.y
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470422099238764160, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
       propertyPath: _respawnTime
-      value: 12.5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3201849906164501072, guid: f0f2cd08c55554b6e8ffd066ebb017fc, type: 3}
       propertyPath: m_LocalScale.x

@@ -13,6 +13,7 @@ public class Damageable : MonoBehaviour
 
     public float Health { get; private set; }
     public bool Dead { get; private set; }
+    public float Percentage => Health / _healthMax;
 
     private void Awake()
     {

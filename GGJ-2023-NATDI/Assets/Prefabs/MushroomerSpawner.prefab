@@ -121,16 +121,16 @@ MonoBehaviour:
   - MushroomerCount: 3
     OverallSpawnTime: 65
     SpawnBetweenMushroomerTime: 0.1
-  - MushroomerCount: 5
+  - MushroomerCount: 6
     OverallSpawnTime: 105
     SpawnBetweenMushroomerTime: 1
-  - MushroomerCount: 8
+  - MushroomerCount: 9
     OverallSpawnTime: 145
     SpawnBetweenMushroomerTime: 1
-  - MushroomerCount: 10
+  - MushroomerCount: 11
     OverallSpawnTime: 185
     SpawnBetweenMushroomerTime: 1
-  - MushroomerCount: 12
+  - MushroomerCount: 13
     OverallSpawnTime: 225
     SpawnBetweenMushroomerTime: 1
   - MushroomerCount: 15

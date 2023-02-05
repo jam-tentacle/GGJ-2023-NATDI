@@ -133,6 +133,7 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         _agent.SetDestination(_targeter.CurrentMushroom.Position);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (_targeter.CurrentMushroom == null)
@@ -143,4 +144,5 @@ public class EnemyMovementAi : MonoBehaviour, ITarget
         UnityEditor.Handles.color = Color.red;
         UnityEditor.Handles.DrawWireDisc(_targeter.CurrentMushroom.transform.position, Vector3.up, 1);
     }
+#endif
 }

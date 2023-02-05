@@ -100,11 +100,13 @@ public class MushroomArea : MonoBehaviour, ITarget
         _cylinder.localScale = new Vector3(_radius * 2, 0.1f, _radius * 2);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         UnityEditor.Handles.color = Color.yellow;
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, _radius);
     }
+#endif
 
     private void OnValidate() => UpdateCylinderScale();
 }

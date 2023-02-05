@@ -17,6 +17,7 @@ public class SpawnerService : Service, IInject
         Vector2 randomPos = Random.insideUnitCircle * radius;
         Vector3 localPos = new(randomPos.x, 0, randomPos.y);
         Mushroom mushroom = Instantiate(Services.Get<AssetsCollection>().GetMushroomByTerrain(terrain), t);
+        mushroom.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
         if (_terrainService.RayCastOnTerrain(t.position + localPos, out RaycastHit hit))
         {
             mushroom.transform.position = hit.point;
